@@ -1,0 +1,17 @@
+// Import the custom scss
+@use "custom";
+
+// Import the components
+@use "components/animation";
+@use "components/buttons";
+@use "components/mixins";
+@use "components/typography";
+
+// Import the sections
+@use "sections/hero";
+@use "sections/facilities";
+@use "sections/navbar";
+@use "sections/contact";
+@use "sections/events";
+@use "sections/rooms";
+@use "sections/testimonials";

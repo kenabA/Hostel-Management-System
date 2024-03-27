@@ -1,0 +1,23 @@
+{
+  "name": "hostel-management-system",
+  "version": "1.0.0",
+  "description": "Making a hostel management system.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "sass --watch scss:assets/css"
+  },
+  "keywords": [
+    "Bootstrap",
+    "bootstrap-v5",
+    "sass",
+    "hostel-management-system"
+  ],
+  "author": "Kenab Kushal K.C.",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.72.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
