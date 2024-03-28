@@ -1,3 +1,49 @@
-.section-facilities {
+@use "../custom" as *;
+
+// - Font Size (px)
+// 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+.facilities {
   background-color: #fdf5e6;
+
+  &_content--details {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.062);
+    height: 100%;
+  }
+  @include media-breakpoint-down(md) {
+    .row {
+      flex-direction: column !important;
+      gap: 42px;
+    }
+
+    span,
+    h2,
+    p,
+    h3,
+    i {
+      text-align: center;
+    }
+    .icon-bx {
+      display: block !important;
+      text-align: center;
+    }
+    h2 {
+      font-size: 36px;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    h2 {
+      font-size: 44px;
+    }
+
+    .hero_content--btn {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 1152px) {
+    .facilities_content--box {
+      width: 100%;
+    }
+  }
 }

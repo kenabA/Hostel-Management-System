@@ -1,0 +1,22 @@
+@use "../custom" as *;
+
+@include media-breakpoint-up(lg) {
+  .container {
+    max-width: 90%;
+  }
+}
+@include media-breakpoint-down(lg) {
+  .container {
+    max-width: 90%;
+  }
+}
+@include media-breakpoint-down(md) {
+  .container {
+    max-width: 90%;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 90%;
+  }
+}

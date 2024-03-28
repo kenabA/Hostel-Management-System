@@ -2,6 +2,7 @@
 
 // BUTTON PRIMARY
 .btn-1 {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   text-wrap: nowrap;
   color: $white;
   font-size: 18px;
@@ -37,6 +38,7 @@
 
 // BUTTON PRIMARY
 .btn-2 {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   color: $white;
   text-wrap: nowrap;
   font-size: 18px;
@@ -56,17 +58,15 @@
 }
 
 .btn-2-link {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   text-decoration: none;
   text-align: center;
   color: $white;
-  font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
-  flex-grow: 1;
-  background-color: $primary;
-  padding-block: 12px;
-  padding-inline: 24px;
+  background-color: $secondary;
+  width: 6rem;
   border-radius: 4px;
   transition: all 0.2s ease !important;
 }

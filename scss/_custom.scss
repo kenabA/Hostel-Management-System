@@ -19,6 +19,7 @@ $primary: $org;
 $primary_tint: #fdf5e6;
 $primary_shade--1: #e09200;
 $secondary: $grn;
+$secondary_tint: #e6f0e8;
 $secondary_shade--1: #72ac76;
 
 @import "../node_modules/bootstrap/scss/functions";
@@ -38,6 +39,7 @@ $custom-theme-colors: (
   "primary-hover": $primary_shade--1,
   "secondary-hover": $secondary_shade--1,
   "primary-tint": $primary_tint,
+  "secondary-tint": $secondary_tint,
 );
 
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
