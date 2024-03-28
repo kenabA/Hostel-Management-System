@@ -18134,10 +18134,12 @@ textarea.form-control-lg {
   }
 }
 .btn-1 {
+  text-wrap: nowrap;
   color: #f7f7f7;
   font-size: 18px;
   font-weight: 600;
   border: none;
+  flex-grow: 1;
   background-color: #ef9b00;
   padding-block: 12px;
   padding-inline: 24px;
@@ -18168,9 +18170,11 @@ textarea.form-control-lg {
 
 .btn-2 {
   color: #f7f7f7;
+  text-wrap: nowrap;
   font-size: 18px;
   font-weight: 600;
   border: none;
+  flex-grow: 1;
   background-color: #80b484;
   padding-block: 12px;
   padding-inline: 24px;
@@ -18309,6 +18313,37 @@ textarea.form-control-lg {
 
 .lh-para {
   line-height: 1.6 !important;
+}
+
+@media (max-width: 767.98px) {
+  #section-hero .row {
+    flex-direction: column-reverse !important;
+    gap: 42px;
+  }
+  #section-hero button {
+    width: 100%;
+  }
+  #section-hero h1 {
+    text-align: center;
+    line-height: 1.2;
+    font-size: 40px;
+  }
+  #section-hero p {
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  #section-hero h1 {
+    font-size: 44px;
+  }
+  #section-hero .hero_content--btn {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1199px) {
+  #section-hero button {
+    font-size: 16px;
+  }
 }
 
 .section-facilities {

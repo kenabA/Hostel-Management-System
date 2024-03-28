@@ -2,10 +2,12 @@
 
 // BUTTON PRIMARY
 .btn-1 {
+  text-wrap: nowrap;
   color: $white;
   font-size: 18px;
   font-weight: 600;
   border: none;
+  flex-grow: 1;
   background-color: $primary;
   padding-block: 12px;
   padding-inline: 24px;
@@ -36,9 +38,11 @@
 // BUTTON PRIMARY
 .btn-2 {
   color: $white;
+  text-wrap: nowrap;
   font-size: 18px;
   font-weight: 600;
   border: none;
+  flex-grow: 1;
   background-color: $secondary;
   padding-block: 12px;
   padding-inline: 24px;

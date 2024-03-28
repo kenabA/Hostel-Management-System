@@ -1,0 +1,40 @@
+@use "../custom" as *;
+// - Font Size (px)
+// 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 40 / 44 / 48 / 52 / 62 / 74 / 86 / 98
+#section-hero {
+  @include media-breakpoint-down(md) {
+    .row {
+      flex-direction: column-reverse !important;
+      gap: 42px;
+    }
+
+    button {
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      line-height: 1.2;
+      font-size: 40px;
+    }
+    p {
+      text-align: center;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    h1 {
+      font-size: 44px;
+    }
+
+    .hero_content--btn {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    button {
+      font-size: 16px;
+    }
+  }
+}
