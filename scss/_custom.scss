@@ -17,7 +17,9 @@ $grn: #80b484;
 
 $primary: $org;
 $primary_tint: #fdf5e6;
+$primary_tint--1: #ffeac2;
 $primary_shade--1: #e09200;
+
 $secondary: $grn;
 $secondary_tint: #e6f0e8;
 $secondary_shade--1: #72ac76;
@@ -39,6 +41,7 @@ $custom-theme-colors: (
   "primary-hover": $primary_shade--1,
   "secondary-hover": $secondary_shade--1,
   "primary-tint": $primary_tint,
+  "primary-tint--1": $primary_tint--1,
   "secondary-tint": $secondary_tint,
 );
 
@@ -69,3 +72,5 @@ $spacers: (
 
 // Import Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$enable-negative-margins: true;
