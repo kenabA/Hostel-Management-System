@@ -1,3 +1,5 @@
+@use "../custom" as *;
+
 .rooms {
   &_content {
     &--details {
@@ -18,6 +20,33 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    span,
+    h2,
+    p,
+    i {
+      text-align: center;
+    }
+
+    .rooms_content--btn {
+      text-align: center;
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    h2 {
+      font-size: 44px;
     }
   }
 }

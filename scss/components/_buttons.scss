@@ -105,3 +105,21 @@
   border-radius: 4px;
   transition: all 0.2s ease !important;
 }
+
+// BUTTON PRIMARY
+.btn-4 {
+  background-color: $white;
+  padding: 0;
+  background-color: none;
+  text-wrap: nowrap;
+  color: $secondary;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid $secondary;
+  transition: border 0.3s ease !important;
+}
+.btn-4:hover {
+  color: $secondary_shade--1;
+  border-bottom: 2px solid transparent;
+}
