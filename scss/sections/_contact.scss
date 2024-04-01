@@ -1,0 +1,9 @@
+@use "../custom" as *;
+
+.contactus {
+  @include media-breakpoint-down(md) {
+    .contact_content--btnBx {
+      flex-direction: column;
+    }
+  }
+}
