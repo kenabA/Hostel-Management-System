@@ -18557,6 +18557,7 @@ textarea.form-control-lg {
   background-color: #fdf5e6;
 }
 .facilities_content--details {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.046);
   height: 100%;
 }
 @media (max-width: 767.98px) {
@@ -18593,6 +18594,19 @@ textarea.form-control-lg {
   }
 }
 
+.footer {
+  background-color: #fdf5e6;
+}
+.footer .footer_content--texts-link {
+  transition: all 0.2s;
+}
+.footer .footer_content--texts-link:hover {
+  color: #343a40 !important;
+}
+
+.contactus .contact_content--box {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.137);
+}
 @media (max-width: 767.98px) {
   .contactus .contact_content--btnBx {
     flex-direction: column;
@@ -18754,6 +18768,14 @@ textarea.form-control-lg {
   .testimonials .testimonials_content--personal-details {
     text-align: start;
   }
+}
+
+.ls-none {
+  list-style: none;
+}
+
+.td-none {
+  text-decoration: none;
 }
 
 @media (min-width: 992px) {

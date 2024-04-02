@@ -1,6 +1,9 @@
 @use "../custom" as *;
 
 .contactus {
+  .contact_content--box {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.137);
+  }
   @include media-breakpoint-down(md) {
     .contact_content--btnBx {
       flex-direction: column;

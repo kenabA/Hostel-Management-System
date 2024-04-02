@@ -1,0 +1,11 @@
+@use "../custom" as *;
+
+.footer {
+  background-color: #fdf5e6;
+  .footer_content--texts-link {
+    transition: all 0.2s;
+    &:hover {
+      color: $gray-800 !important;
+    }
+  }
+}

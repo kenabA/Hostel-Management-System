@@ -1,5 +1,18 @@
 @use "../custom" as *;
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.ls-none {
+  list-style: none;
+}
+
+.td-none {
+  text-decoration: none;
+}
+
 @include media-breakpoint-up(lg) {
   .container {
     max-width: 90%;
