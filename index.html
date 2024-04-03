@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hostel Management System</title>
+    <title>Hamrostel</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
@@ -47,7 +47,9 @@
               <a class="nav-link text-white fw-semibold" href="#events"
                 >Events</a
               >
-              <a class="nav-link text-white fw-semibold" href="#">Contact Us</a>
+              <a class="nav-link text-white fw-semibold" href="#contactus"
+                >Contact Us</a
+              >
               <a class="nav-link btn-2-link" target="_blank" href="login.html"
                 >Login</a
               >
@@ -84,12 +86,15 @@
                 </p>
               </div>
               <div class="hero_content--btn d-flex gap-32 pe-12">
-                <button class="btn-1 reserve-appointment-btn">
+                <button
+                  onclick="alert('Feature in progress')"
+                  class="btn-1 reserve-appointment-btn"
+                >
                   Reserve Appointment<i
                     class="ms-12 fa-solid fa-calendar-check"
                   ></i>
                 </button>
-                <button class="btn-2">
+                <button class="btn-2" id="get-started">
                   Get Started<i class="ms-12 fa-solid fa-chevron-down"></i>
                 </button>
               </div>
@@ -568,10 +573,10 @@
               Are you ready to take the next step toward your future career?
             </p>
             <div class="contact_content--btnBx d-flex gap-24">
-              <button class="btn-2 py-18">
+              <button id="contact-us-btn" class="btn-2 py-18">
                 <i class="fa-solid fa-phone me-24"></i>Contact Us
               </button>
-              <button class="btn-1 py-18">
+              <button onclick="openNewPage()" class="btn-1 py-18">
                 <i class="fa-regular fa-calendar-check me-24"></i>Apply Now
               </button>
             </div>

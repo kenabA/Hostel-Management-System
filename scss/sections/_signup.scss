@@ -1,10 +1,11 @@
 @use "../custom" as *;
 
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+.signup {
+  @media (min-width: 992px) {
+    .container {
+      max-width: 50%;
+    }
+  }
   &_content--box {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.105);
   }
