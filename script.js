@@ -6,6 +6,8 @@ var sectionFacilities = document.getElementById("facilities");
 var sectionFooter = document.getElementById("footer");
 var reserveAppBtn = document.querySelector(".reserve-appointment-btn");
 var heroContent = document.querySelector(".hero_content--texts");
+var fNum = document.querySelector(".footer-num");
+var fMail = document.querySelector(".footer-mail");
 
 const isInViewport = (element) => {
   var bounding = element.getBoundingClientRect();
@@ -41,7 +43,7 @@ contactBtn.addEventListener("click", () => {
   });
   setTimeout(() => {
     outlineTxt();
-  }, 800);
+  }, 600);
 });
 
 const outlineBtn = () => {
@@ -52,9 +54,12 @@ const outlineBtn = () => {
 };
 
 const outlineTxt = () => {
-  reserveAppBtn.style.color = "#D8315B";
+  fNum.style.cssText = "color: #D8315B !important;";
+  fMail.style.cssText = "color: #D8315B !important;";
+
   setTimeout(() => {
-    reserveAppBtn.style.color = "#ef9b00";
+    fNum.style.color = "#6c757d";
+    fMail.style.color = "#6c757d";
   }, 1000);
 };
 
