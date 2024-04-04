@@ -2,13 +2,13 @@
 
 .signup {
   @media (min-width: 992px) {
-    .container {
-      max-width: 50%;
-    }
+    // .container {
+    //   max-width: 50%;
+    // }
   }
-  &_content--box {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.105);
-  }
+  // &_content--box {
+  //   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.105);
+  // }
 
   .create-account {
     transition: all 0.2s;

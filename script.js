@@ -17,10 +17,18 @@ createAccountBtn.addEventListener("click", function () {
   var newBsModal = new bootstrap.Modal(modal2);
   newBsModal.show();
 });
-loginBtn.addEventListener("click", function () {
+
+const showModal1 = () => {
   var newBsModal = new bootstrap.Modal(modal1);
   newBsModal.show();
-});
+};
+
+const showModal2 = () => {
+  var newBsModal = new bootstrap.Modal(modal2);
+  newBsModal.show();
+};
+
+loginBtn.addEventListener("click", showModal1);
 
 const isInViewport = (element) => {
   var bounding = element.getBoundingClientRect();

@@ -18538,6 +18538,10 @@ textarea.form-control-lg {
   line-height: 1.6 !important;
 }
 
+.modal .modal-signup {
+  max-width: 50% !important;
+}
+
 .hero_content--img {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
 }
@@ -18852,14 +18856,6 @@ label {
   color: #e09200 !important;
 }
 
-@media (min-width: 992px) {
-  .signup .container {
-    max-width: 50%;
-  }
-}
-.signup_content--box {
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.105);
-}
 .signup .create-account {
   transition: all 0.2s;
 }
