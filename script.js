@@ -4,10 +4,23 @@ var contactBtn = document.getElementById("contact-us-btn");
 var sectionHeader = document.getElementById("hero");
 var sectionFacilities = document.getElementById("facilities");
 var sectionFooter = document.getElementById("footer");
+var modal1 = document.getElementById("staticBackdrop");
+var modal2 = document.getElementById("staticBackdrop1");
 var reserveAppBtn = document.querySelector(".reserve-appointment-btn");
 var heroContent = document.querySelector(".hero_content--texts");
 var fNum = document.querySelector(".footer-num");
 var fMail = document.querySelector(".footer-mail");
+var createAccountBtn = document.querySelector(".create-account");
+var loginBtn = document.querySelector(".login-account");
+
+createAccountBtn.addEventListener("click", function () {
+  var newBsModal = new bootstrap.Modal(modal2);
+  newBsModal.show();
+});
+loginBtn.addEventListener("click", function () {
+  var newBsModal = new bootstrap.Modal(modal1);
+  newBsModal.show();
+});
 
 const isInViewport = (element) => {
   var bounding = element.getBoundingClientRect();

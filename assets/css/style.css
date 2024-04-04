@@ -18845,9 +18845,6 @@ label {
   align-items: center;
   justify-content: center;
 }
-.login_content--box {
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.105);
-}
 .login .create-account {
   transition: all 0.2s;
 }
