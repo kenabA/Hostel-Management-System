@@ -871,11 +871,16 @@
 
             <div class="col-md-6 message_content--box col-sm-12">
               <div class="bg-white message_content--formBox p-32 rounded-4">
-                <form class="d-flex message_content--form flex-column gap-32">
+                <form
+                  class="d-flex message_content--form flex-column gap-32"
+                  action="https://formspree.io/f/xqkrgkej"
+                  method="POST"
+                >
                   <div class="d-flex gap-18">
                     <div class="message_content--inpu w-100">
                       <label for="name" class="form-label">Name</label>
                       <input
+                        name="username"
                         type="text"
                         class="form-control"
                         id="name"
@@ -886,6 +891,7 @@
                       <label for="subject" class="form-label">Subject</label>
                       <input
                         type="text"
+                        name="subject"
                         required
                         class="form-control"
                         id="subject"
@@ -898,6 +904,7 @@
                         >Email address</label
                       >
                       <input
+                        name="email"
                         type="email"
                         required
                         class="form-control"
@@ -932,12 +939,13 @@
                       class="form-control"
                     ></textarea>
                   </div>
-                  <a
+                  <button
                     type="submit"
                     href="#"
                     class="btn-4-link send-msg d-block w-100"
-                    >Send Message</a
                   >
+                    Send Message
+                  </button>
                 </form>
               </div>
             </div>
