@@ -5,6 +5,12 @@
   margin: 0px;
 }
 
+@include media-breakpoint-down(md) {
+  .message_content--input {
+    flex-direction: column;
+  }
+}
+
 label {
   color: map-get($theme-colors, "gray-700") !important;
 }
