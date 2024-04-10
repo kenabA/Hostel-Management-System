@@ -3,10 +3,13 @@ var getStartedBtn = document.getElementById("get-started");
 var contactBtn = document.getElementById("contact-us-btn");
 var sectionHeader = document.getElementById("hero");
 var sectionFacilities = document.getElementById("facilities");
+var sectionContact = document.getElementById("contactus");
+
 var sectionFooter = document.getElementById("footer");
 var modal1 = document.getElementById("staticBackdrop");
 var modal2 = document.getElementById("staticBackdrop1");
 var reserveAppBtn = document.querySelector(".reserve-appointment-btn");
+var sectionMessage = document.getElementById("message");
 var heroContent = document.querySelector(".hero_content--texts");
 var fNum = document.querySelector(".footer-num");
 var fMail = document.querySelector(".footer-mail");
@@ -50,6 +53,12 @@ knowMoreBtn.addEventListener("click", () => {
   setTimeout(() => {
     outlineBtn();
   }, 800);
+});
+
+reserveAppBtn.addEventListener("click", () => {
+  sectionMessage.scrollIntoView({
+    behavior: "smooth",
+  });
 });
 
 getStartedBtn.addEventListener("click", () => {

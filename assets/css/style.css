@@ -18467,10 +18467,10 @@ textarea.form-control-lg {
 }
 
 .btn-5 {
-  background-color: #6c757d;
+  background-color: #f7f7f7;
   background-color: none;
   text-wrap: nowrap;
-  color: #f7f7f7;
+  color: #ef9b00;
   font-size: 18px;
   font-weight: 600;
   transition: all 0.3s ease !important;
@@ -18478,8 +18478,8 @@ textarea.form-control-lg {
 
 .btn-5:hover,
 .btn-5:active {
-  background-color: #343a40;
-  color: #f7f7f7;
+  background-color: #e9ecef;
+  color: #e09200;
 }
 
 * {

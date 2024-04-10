@@ -11,8 +11,6 @@
     />
   </head>
   <body>
-    <!----------------------- MODAL ----------------------->
-
     <!-- Login : Modal -->
     <div
       class="modal fade"
@@ -254,6 +252,19 @@
                       />
                     </div>
                     <div class="login_content--input">
+                      <label for="passport" class="form-label"
+                        >Guradian Passport</label
+                      >
+                      <input
+                        type="number"
+                        required
+                        class="form-control"
+                        id="passport"
+                        name="passport"
+                        title="Please enter a 10-digit number starting with 9"
+                      />
+                    </div>
+                    <div class="login_content--input">
                       <label for="form-select-1" class="mb-8"
                         >Select User</label
                       >
@@ -372,7 +383,7 @@
               </div>
               <div class="hero_content--btn d-flex gap-32 pe-12">
                 <button
-                  onclick="alert('Feature in progress')"
+                  id="reserve-appointment"
                   class="btn-1 reserve-appointment-btn"
                 >
                   Reserve Appointment<i
