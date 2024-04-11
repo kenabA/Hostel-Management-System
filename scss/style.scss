@@ -9,15 +9,15 @@
 @use "components/modal";
 
 // Import the sections
-@use "sections/hero";
-@use "sections/facilities";
-@use "sections/footer";
-@use "sections/navbar";
-@use "sections/contact";
-@use "sections/events";
-@use "sections/rooms";
-@use "sections/testimonials";
-@use "sections/message";
-@use "sections/general";
-@use "sections/login";
-@use "sections/signup";
+@use "sections/showcase/hero";
+@use "sections/showcase/facilities";
+@use "sections/showcase/footer";
+@use "sections/showcase/navbar";
+@use "sections/showcase/contact";
+@use "sections/showcase/events";
+@use "sections/showcase/rooms";
+@use "sections/showcase/testimonials";
+@use "sections/showcase/message";
+@use "sections/showcase/general";
+@use "sections/showcase/login";
+@use "sections/showcase/signup";

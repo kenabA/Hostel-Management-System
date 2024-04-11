@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <!----------------------- NAVBAR ----------------------->
+    <!-----=====-----===== SIDENAV =====-----=====----->
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
@@ -19,7 +19,7 @@
       aria-labelledby="offcanvasExampleLabel"
     >
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h3 class="text-gamma m-0">Hamrostel</h3>
         <button
           type="button"
           class="btn-close"
@@ -28,24 +28,12 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </div>
-        <div class="dropdown mt-3">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            Dropdown button
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
+        <ul>
+          <li><a href="">Dashboard</a></li>
+          <li><a href="">Rooms</a></li>
+          <li><a href="">Client</a></li>
+          <li><a href="">Settings</a></li>
+        </ul>
       </div>
     </div>
 
@@ -55,7 +43,7 @@
         <div class="container">
           <div class="d-flex gap-24 justify-content-center align-items-center">
             <button
-              class="btn btn-5 py-4 px-8"
+              class="btn btn-5"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
@@ -64,10 +52,7 @@
               <i class="fa-solid fa-bars"></i>
             </button>
           </div>
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarNavAltMarkup"
-          >
+          <div class="justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav fw-medium">
               <a
                 type="button"

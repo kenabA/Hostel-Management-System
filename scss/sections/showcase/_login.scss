@@ -1,6 +1,10 @@
-@use "../custom" as *;
+@use "../../custom" as *;
 
-.signup {
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   .create-account {
     transition: all 0.2s;
     &:hover {

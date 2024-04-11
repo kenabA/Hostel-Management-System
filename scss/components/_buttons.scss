@@ -147,16 +147,17 @@
 
 // BUTTON PRIMARY
 .btn-5 {
-  background-color: $white;
+  background-color: $primary_tint;
   background-color: none;
   text-wrap: nowrap;
   color: $primary;
   font-size: 18px;
   font-weight: 600;
   transition: all 0.3s ease !important;
-}
-.btn-5:hover,
-.btn-5:active {
-  background-color: $gray-200;
-  color: map-get($theme-colors, "primary-hover");
+
+  &:hover,
+  &:active {
+    background-color: $primary_tint--1;
+    color: map-get($theme-colors, "primary-hover");
+  }
 }

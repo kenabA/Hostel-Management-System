@@ -1,3 +1,5 @@
+@use "../../custom" as *;
+
 .message {
   background-color: #fdf5e6;
   &_content--formBox {
