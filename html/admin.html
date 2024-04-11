@@ -18,8 +18,8 @@
       id="offcanvasExample"
       aria-labelledby="offcanvasExampleLabel"
     >
-      <div class="offcanvas-header">
-        <h3 class="text-gamma m-0">Hamrostel</h3>
+      <div class="offcanvas-header p-32">
+        <h3 class="font-24 m-0 fw-semibold">Hamrostel</h3>
         <button
           type="button"
           class="btn-close"
@@ -27,12 +27,36 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body">
-        <ul>
-          <li><a href="">Dashboard</a></li>
-          <li><a href="">Rooms</a></li>
-          <li><a href="">Client</a></li>
-          <li><a href="">Settings</a></li>
+      <div class="offcanvas-body p-32">
+        <ul
+          class="offcanvas-navigation-lists ls-none d-flex flex-column gap-32 p-0"
+        >
+          <li class="offcanvas-navigation-list font-18">
+            <a href="#" class="td-none text-gray-500 active-side-nav">
+              <i
+                class="offcanvas-navigation-list-icon fa-solid fa-chart-simple"
+              ></i>
+              Dashboard</a
+            >
+          </li>
+          <li class="offcanvas-navigation-list font-18">
+            <a href="#" class="td-none text-gray-500 non-active-side-nav">
+              <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
+              Rooms</a
+            >
+          </li>
+          <li class="offcanvas-navigation-list font-18">
+            <a href="#" class="td-none text-gray-500 non-active-side-nav">
+              <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
+              Client</a
+            >
+          </li>
+          <li class="offcanvas-navigation-list font-18">
+            <a href="#" class="td-none text-gray-500 non-active-side-nav">
+              <i class="offcanvas-navigation-list-icon fa-solid fa-gear"></i>
+              Settings</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -40,26 +64,30 @@
     <!-----=====-----===== SECTION : HEADER =====-----=====----->
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary pb-24 pt-24">
-        <div class="container">
-          <div class="d-flex gap-24 justify-content-center align-items-center">
+        <div class="container justify-content-between">
+          <div class="d-flex gap-18 justify-content-center align-items-center">
             <button
-              class="btn btn-5"
+              class="btn text-primary-tint"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample"
             >
-              <i class="fa-solid fa-bars"></i>
+              <i class="fa-solid fa-bars font-20"></i>
             </button>
+            <h3 class="text-gamma fw-semibold m-0 text-primary-tint">
+              Administrator
+            </h3>
           </div>
-          <div class="justify-content-end" id="navbarNavAltMarkup">
+
+          <div id="navbarNavAltMarkup">
             <div class="navbar-nav fw-medium">
               <a
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
                 class="nav-link btn-5 rounded-5 px-12"
-                >Hi, Kenab <i class="fa-solid fa-chevron-down"></i
+                >Hi, Kenab <i class="ms-8 fa-solid fa-chevron-down"></i
               ></a>
             </div>
           </div>

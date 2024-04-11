@@ -96,9 +96,3 @@ const outlineTxt = () => {
 function openNewPage() {
   window.open("signup.html", "_blank");
 }
-
-const hamBurger = document.querySelector(".toggle-btn");
-
-hamBurger.addEventListener("click", function () {
-  document.querySelector("#sidebar").classList.toggle("expand");
-});

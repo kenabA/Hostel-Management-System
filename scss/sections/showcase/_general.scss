@@ -15,6 +15,19 @@ label {
   color: map-get($theme-colors, "gray-700") !important;
 }
 
+.active-side-nav {
+  font-weight: 600;
+  color: $primary !important;
+  cursor: default;
+}
+
+.non-active-side-nav {
+  transition: all 0.2s ease;
+  &:hover {
+    color: map-get($theme-colors, "gray-600") !important;
+  }
+}
+
 .w-100 {
   width: 100%;
 }
