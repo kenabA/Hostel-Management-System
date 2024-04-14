@@ -18478,6 +18478,7 @@ textarea.form-control-lg {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  padding-block: 8px;
   color: #f7f7f7;
   font-weight: 600;
   border: none;
@@ -18636,6 +18637,11 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 
+.text-beta-1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .text-gamma {
   font-size: 24px;
   font-weight: bold;
@@ -18645,6 +18651,9 @@ textarea.form-control-lg {
   line-height: 1.6 !important;
 }
 
+.hero {
+  height: 80vh;
+}
 .hero_content--img {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
 }
@@ -18933,6 +18942,10 @@ label {
   color: #6c757d !important;
 }
 
+.offcanvas-navigation-list-icon {
+  width: 32px !important;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -19020,8 +19033,8 @@ label {
     font-size: 44px !important;
   }
 }
-.offcanvas-navigation-list-icon {
-  width: 32px !important;
+.dashboard-header {
+  padding-block: 48px;
 }
 
 /*# sourceMappingURL=style.css.map */
