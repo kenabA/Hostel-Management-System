@@ -44,6 +44,19 @@ label {
   text-decoration: none;
 }
 
+.status {
+  &-active {
+    background-color: $success !important;
+    color: $white !important;
+    text-align: center;
+  }
+  &-inactive {
+    background-color: $danger !important;
+    color: $white !important;
+    text-align: center;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .container {
     max-width: 90%;

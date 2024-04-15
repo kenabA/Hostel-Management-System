@@ -16,6 +16,12 @@ $black: #333;
 $org: #ef9b00;
 $grn: #80b484;
 
+$sky-blue: #2672e3;
+$sky-blue_tint: #c9dcf8;
+
+$light-red: #f2c7ba;
+$red: #ce4e27;
+
 $primary: $org;
 $primary_tint: #fdf5e6;
 $primary_tint--1: #ffeac2;
@@ -45,6 +51,10 @@ $custom-theme-colors: (
   "primary-tint--1": $primary_tint--1,
   "secondary-tint": $secondary_tint,
   "pure-white": $pure-white,
+  "sky-blue": $sky-blue,
+  "sky-blue_tint": $sky-blue_tint,
+  "light-red": $light-red,
+  "red": $red,
 );
 
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
