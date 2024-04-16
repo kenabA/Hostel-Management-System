@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+<style>
+    :root {
+        --primary-color: #f9c08d;
+        --background-color: #f4f4f4;
+        --text-color: #333;
+        --input-background: #fff;
+        --border-color: #ccc;
+        --hover-background: #e89d78;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+    }
+    
+    .sidebar {
+        width: 200px;
+        background-color: var(--primary-color);
+        color: white;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+        position: fixed;
+    }
+    
+    .sidebar a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .sidebar a:hover {
+        background-color: var(--hover-background);
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    
+    .registration-form {
+        background-color: var(--input-background);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+    
+    .form-section {
+        margin-bottom: 20px;
+    }
+    
+    .form-section h2 {
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-color: var(--input-background);
+    }
+    
+    input[type="submit"] {
+        width: auto;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        margin-top: 10px;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: var(--hover-background);
+    }
+    
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+    
+        .main-content {
+            margin-left: 0;
+            padding: 10px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h1> Hamrostel</h1>      
+        <a href="/dashboard.html#add-events-section"">Dashboard</a>
+        <a href="/studentra.html#add-events-section">Register Student</a>
+        <a href="/manageroom.html#add-events-section">Manage Rooms</a>
+        <a href="/events.html#add-events-section">Events</a>
+        <a href="/message.html#add-events-selection">Messaging</a>
+        <a href="mealtime.html">mealTable</a>
+        <a href="#">Log Out</a>
+      </div>
+
+<div class="main-content">
+  <div class="registration-form">
+    <h1>Student Registration Form</h1>
+    
+    <!-- Student Details Section -->
+    <div class="form-section">
+      <h2>Student Details</h2>
+      <div>
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first_name" placeholder="Enter First Name">
+        
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last_name" placeholder="Enter Last Name">
+      </div>
+      <div>
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter Address">
+        
+        <label for="contact">Contact</label>
+        <input type="text" id="contact" name="contact" placeholder="Enter Contact">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email">
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password">
+      </div>
+      <div>
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="Enter Password Again">
+      </div>
+    </div>
+    
+    <!-- Parents/Guardian Details Section -->
+    <div class="form-section">
+      <h2>Parents/Guardian Details</h2>
+      <div>
+        <label for="parent-first-name">First Name</label>
+        <input type="text" id="parent-first-name" name="parent_first_name" placeholder="Enter First Name">
+        
+        <label for="parent-last-name">Last Name</label>
+        <input type="text" id="parent-last-name" name="parent_last_name" placeholder="Enter Last Name">
+      </div>
+      <div>
+        <label for="parent-address">Address</label>
+        <input type="text" id="parent-address" name="parent_address" placeholder="Enter Address">
+        
+        <label for="parent-contact">Contact</label>
+        <input type="text" id="parent-contact" name="parent_contact" placeholder="Enter Contact">
+      </div>
+      <div>
+        <label for="citizenship-id">Citizenship ID</label>
+        <input type="text" id="citizenship-id" name="citizenship_id" placeholder="Enter Citizenship ID">
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Register">
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Time Management</title>
+<style>
+:root {
+    --primary-color: #f9c08d;
+    --hover-color: #333;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --input-background: #fff;
+    --border-color: #ccc;
+    --hover-background: #e89d78;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.sidebar {
+    width: 200px;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--hover-color);
+}
+
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+</style>
+</head>
+<body>
+<div class="sidebar">
+    <h1>Hamrostel</h1>
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/studentra.html">Register Student</a>
+    <a href="/manageroom.html">Manage Rooms</a>
+    <a href="/events.html">Events</a>
+    <a href="/messaging.html">Messaging</a>
+    <a href="/mealtime.html">mealTable</a>
+    <a href="#">Log Out</a>
+</div>
+
+<div class="main-content">
+    <div class="form-container">
+        <h2>Meal Time Scheduler</h2>
+        <form id="mealTimeForm">
+            <label for="mealTime">Meal Time:</label>
+            <input type="text" id="mealTime" placeholder="E.g., Lunch, Dinner" required>
+
+            <label for="mealDate">Date:</label>
+            <input type="date" id="mealDate" required>
+
+            <button type="button" onclick="addMealTime()">Add Meal Time</button>
+        </form>
+        <table id="mealTable">
+            <thead>
+                <tr>
+                    <th>Meal</th>
+                    <th>Date</th>
+                    <th>Day of Week</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be added here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function addMealTime() {
+    const mealTime = document.getElementById('mealTime').value.trim();
+    const mealDate = document.getElementById('mealDate').value;
+    if (mealTime && mealDate) {
+        const date = new Date(mealDate);
+        const options = { weekday: 'long' };
+        const dayOfWeek = new Intl.DateTimeFormat('en-US', options).format(date);
+
+        const table = document.getElementById('mealTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow(table.rows.length);
+        newRow.innerHTML = `<td>${mealTime}</td><td>${mealDate}</td><td>${dayOfWeek}</td>`;
+        document.getElementById('mealTimeForm').reset();
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
+</script>
+</body>
+</html>

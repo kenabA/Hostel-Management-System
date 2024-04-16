@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Events</title>
+<style>
+    :root {
+        --primary-color: #f9c08d;
+        --hover-color: #333;
+        --hover-background: #e89d78;
+        --background-color: #f4f4f4;
+        --text-color: #333;
+        --input-background: #fff;
+        --border-color: #ccc;
+    }
+    
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .sidebar {
+        width: 200px;
+        background: var(--primary-color);
+        color: white;
+        padding: 15px;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .sidebar a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+    
+    .sidebar a:hover {
+        background-color: var(--hover-color);
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    
+    .form-container {
+        background: var(--input-background);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    
+    .form-row, .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    input[type="text"], input[type="date"], input[type="file"], button {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        width: 100%;
+    }
+    
+    button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    button:hover {
+        background-color: var(--hover-background);
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+        padding: 12px;
+        border: 1px solid var(--border-color);
+    }
+    
+    th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .image-preview {
+        max-width: 100px;
+        margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            position: relative;
+        }
+    
+        .main-content, .add-event-row, .button-group {
+            margin-left: 0;
+            padding: 10px;
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="sidebar">
+    <h1>Hamrostel</h1>      
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/studentra.html">Register Student</a>
+    <a href="/manageroom.html">Manage Rooms</a>
+    <a href="/events.html">Events</a>
+    <a href="/message.html">Messaging</a>
+    <a href="/mealtime.html">Meal Table</a>
+    <a href="#">Log Out</a>
+</div>
+
+<div class="main-content">
+    <div class="form-container">
+        <h1>Add Events</h1>
+        <div class="form-row">
+            <input type="text" id="event-description" placeholder="Event Description">
+            <input type="date" id="event-date">
+        </div>
+        <div class="form-row">
+            <label for="event-photo">Event Photo:</label>
+            <input type="file" id="event-photo" accept="image/*" onchange="previewImage();">
+            <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+        </div>
+        <div class="button-group">
+            <button type="button" onclick="addEvent()">Add</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Event Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="eventTableBody">
+            <!-- Table rows will be dynamically inserted here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+function addEvent() {
+    const description = document.getElementById('event-description').value.trim();
+    const date = document.getElementById('event-date').value;
+    if (description && date) {
+        const tbody = document.getElementById('eventTableBody');
+        const row = tbody.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        cell1.innerHTML = tbody.rows.length;
+        cell2.innerHTML = description;
+        cell3.innerHTML = new Date(date).toLocaleDateString();
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
+
+function resetForm() {
+    document.getElementById('event-description').value = '';
+    document.getElementById('event-date').value = '';
+    const tbody = document.getElementById('eventTableBody');
+    tbody.innerHTML = '';
+    document.getElementById('image-preview').style.display = 'none';
+}
+
+function previewImage() {
+    var file = document.getElementById("event-photo").files;
+    if (file.length > 0) {
+        var fileReader = new FileReader();
+        
+        fileReader.onload = function(event) {
+            document.getElementById("image-preview").src = event.target.result;
+            document.getElementById("image-preview").style.display = 'block';
+        };
+
+        fileReader.readAsDataURL(file[0]);
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messaging - Hamrostel</title>
+<style>
+:root {
+    --primary-color: #f9c08d;
+    --hover-color: #333;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --input-background: #fff;
+    --border-color: #ccc;
+    --hover-background: #e89d78;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.sidebar {
+    width: 200px;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--hover-color);
+}
+
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.message-list {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: var(--hover-background);
+}
+</style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Hamrostel</h1>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/studentra.html">Register Student</a>
+        <a href="/manageroom.html">Manage Rooms</a>
+        <a href="/events.html">Events</a>
+        <a href="/message.html">Messaging</a>
+        <a href="mealtime.html">mealTable</a>
+        <a href="#">Log Out</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Messages</h1>
+        <div class="message-list" id="messageList">
+            <!-- Messages will be displayed here -->
+        </div>
+        <textarea class="message-input" id="messageInput" placeholder="Type your message here..."></textarea>
+        <button class="button" onclick="sendMessage()">Send</button>
+    </div>
+
+<script>
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const messageList = document.getElementById('messageList');
+
+    if (input.value.trim() !== '') {
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message');
+        newMessage.innerHTML = `<p><strong>You:</strong> ${input.value}</p>`;
+        messageList.appendChild(newMessage);
+        input.value = ''; // Clear the input after sending
+        messageList.scrollTop = messageList.scrollHeight; // Scroll to the bottom
+    }
+}
+</script>
+</body>
+</html>

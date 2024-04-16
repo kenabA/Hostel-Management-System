@@ -1,0 +1,121 @@
+:root {
+    /* Define color palette and other base styles */
+    --primary-color: #f9c08d;
+    --hover-color: #333;
+    --hover-background: #e89d78;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-color: #ddd;
+    --highlight-background: #fddab1;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 250px;
+    background: var(--primary-color);
+    color: white;
+    height: 100vh;
+    padding: 20px 0;
+    box-sizing: border-box;
+    position: fixed; /* Fixed positioning to stay in place during scrolling */
+  }
+  
+  .sidebar a {
+    padding: 15px 20px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Define font size here for clarity */
+  }
+  
+  .sidebar a:hover {
+    background-color: var(--hover-color);
+  }
+  
+  /* Main content styling */
+  .main-content {
+    margin-left: 250px; /* Adjusted to accommodate sidebar */
+    padding: 20px;
+    background-color: white;
+    min-height: 100vh;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+  }
+  
+  td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  tr:hover {
+    background-color: var(--highlight-background);
+  }
+  
+  /* Form input styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(249, 192, 141, 0.5);
+  }
+  
+  /* Button styling */
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: var(--hover-background);
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      padding: 10px;
+    }
+  }
+  

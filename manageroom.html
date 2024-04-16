@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Rooms</title>
+<style>
+    :root {
+        --primary-color: #f9c08d;
+        --background-color: #f4f4f4;
+        --text-color: #333;
+        --input-background: #fff;
+        --border-color: #ccc;
+        --hover-background: #e89d78;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+    }
+    
+    .sidebar {
+        width: 200px;
+        background-color: var(--primary-color);
+        color: white;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+        position: fixed;
+    }
+    
+    .sidebar a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .sidebar a:hover {
+        background-color: var(--hover-background);
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+    
+    .form-container {
+        background-color: var(--input-background);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .form-group {
+        margin-right: 20px;
+        flex: 1;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"], select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-color: var(--input-background);
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    
+    button:hover {
+        background-color: var(--hover-background);
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+        padding: 12px;
+        border: 1px solid var(--border-color);
+    }
+    
+    th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+    
+        .main-content, .form-row {
+            margin-left: 0;
+            padding: 10px;
+            flex-direction: column;
+        }
+    
+        .form-group {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1> Hamrostel</h1>      
+        <a href="/dashboard.html#add-events-section"">Dashboard</a>
+        <a href="/studentra.html#add-events-section">Register Student</a>
+        <a href="/manageroom.html#add-events-section">Manage Rooms</a>
+        <a href="/events.html#add-events-section">Events</a>
+        <a href="/message.html#add-events-section">Messaging</a>
+        <a href="mealtime.html">mealTable</a>
+        <a href="#">Log Out</a>
+      </div>
+
+<div class="main-content">
+  <div class="form-container">
+    <h1>Add Rooms</h1>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="room-number">Room Number</label>
+          <input type="text" id="room-number" placeholder="Enter Room Number">
+        </div>
+        <div class="form-group">
+          <label for="seater">Seater</label>
+          <select id="seater">
+            <option value="">Select Seater</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="total-cost">Total Cost</label>
+          <input type="text" id="total-cost" placeholder="Enter Total Cost">
+        </div>
+      </div>
+      <div class="button-group">
+        <button type="submit">Add</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Room Number</th>
+      <th>Seater</th>
+      <th>Fees Per Month</th>
+      <th>Date</th>
+    </tr>
+    <!-- Table rows will be inserted here -->
+  </table>
+</div>
+
+</body>
+</html>

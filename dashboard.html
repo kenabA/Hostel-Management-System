@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamrostel Dashboard</title>
+<style>
+    :root {
+      /* Color Palette */
+      --primary-color: #f9c08d;
+      --hover-color: #333;
+      --hover-background: #e89d78;
+      --background-color: #f4f4f4;
+      --text-color: #333;
+      --border-color: #ddd;
+      --highlight-background: #fddab1;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+    }
+    
+    .sidebar {
+      width: 250px;
+      background: var(--primary-color);
+      color: white;
+      height: 100vh;
+      padding: 20px 0;
+      box-sizing: border-box;
+      position: fixed;
+      overflow: auto;
+    }
+    
+    .sidebar h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+    
+    .sidebar a {
+      padding: 10px 20px;
+      display: block;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    
+    .sidebar a:hover {
+      background: var(--hover-color);
+    }
+    
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      background: white;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background: #eee;
+      padding: 10px;
+      text-align: right;
+      font-size: 0.9em;
+    }
+    
+    .header a {
+      text-decoration: none;
+      color: var(--hover-color);
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    
+    .stats div {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1;
+      text-align: center;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    th {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px;
+    }
+    
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    tr:hover {
+      background-color: var(--highlight-background);
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+    
+      .content {
+        margin-left: 0;
+        padding: 10px;
+      }
+    
+      .stats {
+        flex-direction: column;
+      }
+    }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1> Hamrostel</h1>      
+        <a href="/dashboard.html#add-events-section"">Dashboard</a>
+        <a href="/studentra.html#add-events-section">Register Student</a>
+        <a href="/manageroom.html#add-events-section">Manage Rooms</a>
+        <a href="/events.html#add-events-section">Events</a>
+        <a href="/message.html#add-events-section">Messaging</a>
+        <a href="mealtime.html">mealTable</a>
+        <a href="#">Log Out</a>
+      </div>
+
+<div class="content">
+  <div class="header">
+    <a href="#">admin</a>
+  </div>
+  
+  <div class="stats">
+    <div>
+      <h2>0</h2>
+      <p>Registered Students</p>
+    </div>
+    <div>
+      <h2>0</h2>
+      <p>Registered Rooms</p>
+    </div>
+    <div>
+      <h2>0</h2>
+      <p>Booked Rooms</p>
+    </div>
+  </div>
+  
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Student's Email</th>
+      <th>Date</th>
+    </tr>
+    <!-- Dynamic rows would be inserted here by JavaScript -->
+  </table>
+</div>
+
+<script>
+// JavaScript will go here for dynamic functionality
+// For example, to load student data into the table:
+function loadStudentData() {
+  // This function would typically make an API call to fetch student data
+  // For this example, we will just create a placeholder row
+  var table = document.querySelector("table");
+  var row = table.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  cell1.innerHTML = "1";
+  cell2.innerHTML = "student@example.com";
+  cell3.innerHTML = "2024-04-14";
+}
+
+// Call the function to load data
+loadStudentData();
+</script>
+
+</body>
+</html>
