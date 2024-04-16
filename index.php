@@ -48,7 +48,7 @@
               <form
                 id="login-form"
                 class="d-flex login_content--form flex-column gap-18"
-                action="login.php"
+                action="./login.php"
                 method="POST"
               >
                 <div class="login_content--input">
@@ -296,8 +296,6 @@
                         <option value="1">Sibling</option>
                         <option value="2">Relative</option>
                         <option value="3">Other</option>
-                        <option value="4">Admin</option>
-                        <option value="5">Student</option>
                       </select>
                     </div>
                   </div>
