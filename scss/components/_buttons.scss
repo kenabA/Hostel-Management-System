@@ -1,5 +1,32 @@
 @use "../custom" as *;
 
+.btn-delete {
+  transition: all 0.2s ease !important;
+  background-color: $danger;
+  color: $white;
+  &:hover {
+    background-color: #ab4121;
+    color: $white;
+  }
+}
+.btn-edit {
+  transition: all 0.2s ease !important;
+  background-color: $warning;
+  color: $black;
+  &:hover {
+    background-color: #feb90b;
+  }
+}
+.btn-add {
+  transition: all 0.2s ease !important;
+  background-color: $success;
+  color: $white;
+  &:hover {
+    background-color: #136740;
+    color: $white;
+  }
+}
+
 // BUTTON PRIMARY
 .btn-1 {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
