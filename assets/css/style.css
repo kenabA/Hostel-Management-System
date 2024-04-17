@@ -19374,6 +19374,11 @@ label {
   color: #f7f7f7 !important;
   text-align: center;
 }
+.status-pending {
+  background-color: #ffc107 !important;
+  color: #333 !important;
+  text-align: center;
+}
 
 @media (min-width: 992px) {
   .container {

@@ -274,14 +274,26 @@
                         }
                         
                         while($result = mysqli_fetch_assoc($query)) {
+
+                          $statusClass = '';
+
+                          if ($result['status'] == 'Active') {
+                            $statusClass = 'status-active';
+                        } elseif ($result['status'] == 'Inactive') {
+                            $statusClass = 'status-inactive';
+                        } elseif ($result['status'] == 'Pending') {
+                            $statusClass = 'status-pending';
+                        }
+
                           echo "<tr>
+                          
                           <th scope='row'>1</th>
                           <td>".$result['name']."</td>
                           <td>".$result['email']."</td>
                           <td>".$result['phone_number']."</td>
                           <td>".$result['dob']."</td>
                           <td>".$result['guardian_phone_number']."</td>
-                          <td class='status-active'>".$result['active']."</td>
+                          <td class='".$statusClass."'>".$result['status']."</td>
                         </tr>
                         ";
                         }

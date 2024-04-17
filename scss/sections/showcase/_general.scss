@@ -55,6 +55,11 @@ label {
     color: $white !important;
     text-align: center;
   }
+  &-pending {
+    background-color: $warning !important;
+    color: $black !important;
+    text-align: center;
+  }
 }
 
 @include media-breakpoint-up(lg) {

@@ -23,6 +23,7 @@
       </style>
   </head>
   <body>
+
     <!-----=====-----===== SIDENAV =====-----=====----->
     <div
       class="offcanvas offcanvas-start"
@@ -159,10 +160,13 @@
               class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between"
             >
               <h2 class="text-beta-1">Client</h2>
-              <button class="btn btn-add bg-success text-white">
+              <button  type="button" data-toggle="modal"
+                       class="btn btn-add bg-success text-white" data-target="#staticBackdrop2">
                 <i class="fa-solid fa-plus me-8"></i> Add
               </button>
-            </div>
+
+          </div>
+   
             <div class="dashboard-student-list">
               <div class="dashboard-student-list-body" style="overflow-x: auto">
                 <table class="table table-striped text-nowrap">
@@ -222,7 +226,7 @@
       </section>
     </main>
 
-    <script src="./js/swiper.js"></script>
+    <!-- SCRIPTS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -232,11 +236,8 @@
       src="https://kit.fontawesome.com/4cbeaa27da.js"
       crossorigin="anonymous"
     ></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
+    
+    <script src="../js/script.js"></script>
 
-    <script src="./js/script.js"></script>
   </body>
 </html>
