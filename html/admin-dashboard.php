@@ -136,7 +136,18 @@
             
                 ";
             } else { 
-                echo "User";
+                echo "
+                <div class='dropdown'>
+  
+  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, User</a>
+
+  <ul class='dropdown-menu rounded-3'>
+    <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../index.php'>Logout</a></li>
+  </ul>
+
+</div>
+            
+                ";
             }
             
 
@@ -270,7 +281,7 @@
                           <td>".$result['phone_number']."</td>
                           <td>".$result['dob']."</td>
                           <td>".$result['guardian_phone_number']."</td>
-                          <td class='status-active'>Active</td>
+                          <td class='status-active'>".$result['active']."</td>
                         </tr>
                         ";
                         }
