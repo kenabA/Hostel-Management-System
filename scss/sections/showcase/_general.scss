@@ -1,4 +1,4 @@
-@use "../custom" as *;
+@use "../../custom" as *;
 
 * {
   padding: 0px;
@@ -15,6 +15,23 @@ label {
   color: map-get($theme-colors, "gray-700") !important;
 }
 
+.active-side-nav {
+  font-weight: 600;
+  color: $primary !important;
+  cursor: default;
+}
+
+.non-active-side-nav {
+  transition: all 0.2s ease;
+  &:hover {
+    color: map-get($theme-colors, "gray-600") !important;
+  }
+}
+
+.offcanvas-navigation-list-icon {
+  width: 32px !important;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -25,6 +42,19 @@ label {
 
 .td-none {
   text-decoration: none;
+}
+
+.status {
+  &-active {
+    background-color: $success !important;
+    color: $white !important;
+    text-align: center;
+  }
+  &-inactive {
+    background-color: $danger !important;
+    color: $white !important;
+    text-align: center;
+  }
 }
 
 @include media-breakpoint-up(lg) {

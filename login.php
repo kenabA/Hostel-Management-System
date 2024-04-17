@@ -1,41 +1,25 @@
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 include 'db_connection.php';
+session_start();
 
-if(isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $user_type = $_POST['user_type'];
+if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['user_type'])) {
 
-    // Validate user input
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $user_type = mysqli_real_escape_string($conn, $_POST['user_type']);
 
-    // Query to fetch user from database
-    $sql = "SELECT * FROM users1 WHERE email = '$email' AND user_type = '$user_type'";
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
-        // Verify password
-        if(password_verify($password, $row['password'])) {
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['success_message'] = "You have successfully logged in."; // Set success message
-            //header('Location: dashboard.php'); // Redirect to dashboard after successful login
-            exit();
-        } else {
-            $error = "Invalid email or password";
-        }
+    $user_data = mysqli_fetch_assoc($result);
+
+    if(is_array($user_data) && !empty($user_data)){
+        $_SESSION['email'] = $user_data['email'];
+        $_SESSION['name'] = $user_data['name'];
+        header("Location: html/admin-dashboard.php");
+        exit();
     } else {
-        $error = "Invalid email or password";
+        echo "<p style='color:red; padding:32px; text-align:center;'>No User Found!</p>";
     }
 }
-
-// Display error message if set
-if(isset($error)) {
-    echo $error;
-}
-?>
-

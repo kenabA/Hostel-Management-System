@@ -21,41 +21,82 @@
               </button>
           </div>
           <div class="modal-body p-0">
-              <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
-                  <div class="login_content--header mb-48">
-                      <h2 class="text-beta text-primary fw-semibold text-center mb-14">Login</h2>
-                      <p class="font-16 text-gray-600 text-center">Sign into your account through your details.</p>
-                  </div>
-                  <!-- Login form -->
-                  <form id="login-form" class="d-flex login_content--form flex-column gap-18" action="login.php" method="POST">
-                      <div class="login_content--input">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                          <div id="emailHelp" class="form-text">
-                              <p class="text-gray-500 m-0">We'll never share your email with anyone else.</p>
-                          </div>
-                      </div>
-                      <div class="login_content--input">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" required class="form-control" id="exampleInputPassword1" />
-                      </div>
-                      <div class="login_content--input mb-24">
-                          <label for="form-select" class="mb-8">Select User</label>
-                          <select class="form-select text-secondary" id="fomr-select" aria-label="Default select example">
-                              <option selected>Student</option>
-                              <option value="1">Admin</option>
-                          </select>
-                      </div>
-                      <div class="login_content--footer">
-                          <div class="login_content-btnBox mb-16">
-                              <button type="submit" class="btn-1 w-100">Sign in</button>
-                          </div>
-                          <p class="font-16 text-gray-600 text-center">Don't have an account?
-                              <a data-bs-dismiss="modal" type="button" class="text-primary create-account fw-medium td-none">Create Account</a>
-                          </p>
-                      </div>
-                  </form>
+            <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
+              <div class="login_content--header mb-48">
+                <h2
+                  class="text-beta text-primary fw-semibold text-center mb-14"
+                >
+                  Login
+                </h2>
+                <p class="font-16 text-gray-600 text-center">
+                  Sign into your account through your details.
+                </p>
               </div>
+              <!-- Login form -->
+              <form
+                id="login-form"
+                class="d-flex login_content--form flex-column gap-18"
+                action="./login.php"
+                method="POST"
+              >
+                <div class="login_content--input">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    required
+                    name="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                  />
+                  <div id="emailHelp" class="form-text">
+                    <p class="text-gray-500 m-0">
+                      We'll never share your email with anyone else.
+                    </p>
+                  </div>
+                </div>
+                <div class="login_content--input">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    class="form-control"
+                    id="exampleInputPassword1"
+                  />
+                </div>
+                <div class="login_content--input mb-24">
+                  <label for="form-select" class="mb-8">Select User</label>
+                  <select
+                    class="form-select text-secondary"
+                    id="fomr-select"
+                    name="user_type"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Student</option>
+                    <option value="1">Admin</option>
+                  </select>
+                </div>
+                <div class="login_content--footer">
+                  <div class="login_content-btnBox mb-16">
+                    <button type="submit" class="btn-1 w-100">Sign in</button>
+                  </div>
+                  <p class="font-16 text-gray-600 text-center">
+                    Don't have an account?
+                    <a
+                      data-bs-dismiss="modal"
+                      type="button"
+                      class="text-primary create-account fw-medium td-none"
+                      >Create Account</a
+                    >
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
       </div>
   </div>
@@ -72,86 +113,186 @@
               </button>
           </div>
           <div class="modal-body p-0">
-              <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
-                  <div class="login_content--header mb-48">
-                      <h2 class="text-beta text-primary fw-semibold text-center mb-14">
-                          Sign Up
-                      </h2>
-                      <p class="font-16 text-gray-600 text-center">
-                          Register your account to <strong>become a Hosteler!</strong>
-                      </p>
-                  </div>
-                  <form id="signup-form" class="d-flex login_content--form gap-48 flex-column" action="signup.php" method="POST">
-                      <div class="d-flex gap-18 flex-column login_content--form-personal">
-                          <div class="login_content--input">
-                              <label for="validationDefault01" class="form-label">Name</label>
-                              <input type="text" class="form-control" id="validationDefault01" name="name" required />
-                          </div>
-                          <div class="login_content--input">
-                              <label for="exampleInputEmail1" class="form-label">Email address</label>
-                              <input type="email" required class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
-                              <div id="emailHelp" class="form-text">
-                                  <p class="text-gray-500 m-0">
-                                      We'll never share your email with anyone else.
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="login_content--input">
-                              <label for="exampleInputPassword1" class="form-label">Password</label>
-                              <input type="password" required class="form-control" id="exampleInputPassword1" name="password" />
-                          </div>
-                          <div class="login_content--input">
-                              <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-                              <input type="password" required class="form-control" id="exampleInputPassword2" name="confirm_password" />
-                          </div>
-                          <div class="login_content--input">
-                              <label for="phoneNumber" class="form-label">Phone Number</label>
-                              <input pattern="9\d{9}" type="text" required class="form-control" id="phoneNumber" name="phoneNumber" title="Please enter a 10-digit number starting with 9" />
-                          </div>
-                          <div class="login_content--input">
-                              <label for="dob" class="form-label">Date of Birth</label>
-                              <input type="date" required class="form-control" id="dob" name="dob" title="Please fill your date of birth." />
-                          </div>
-                      </div>
-                      <div class="login_content--form-guardian">
-                          <h3 class="text-gamma mb-32 text-black">Guardian Information</h3>
-                          <div class="d-flex gap-18 flex-column login_content--form-guardian">
-                              <div class="login_content--input">
-                                  <label for="validationDefault03" class="form-label">Guardian Name</label>
-                                  <input type="text" class="form-control" id="validationDefault03" name="guardianName" required />
-                              </div>
-                              <div class="login_content--input">
-                                  <label for="phoneNumber1" class="form-label">Guardian Phone Number</label>
-                                  <input pattern="9\d{9}" type="text" required class="form-control" id="phoneNumber1" name="guardianPhoneNumber" title="Please enter a 10-digit number starting with 9" />
-                              </div>
-                              <div class="login_content--input">
-                                  <label for="passport" class="form-label">Guardian Passport</label>
-                                  <input type="number" required class="form-control" id="passport" name="guardianPassport" title="Please enter a 10-digit number starting with 9" />
-                              </div>
-                              <div class="login_content--input">
-                                  <label for="form-select-1" class="mb-8">Select User</label>
-                                  <select class="form-select text-secondary" id="form-select-1" name="userType" aria-label="Default select example">
-                                      <option selected>Parent</option>
-                                      <option value="1">Sibling</option>
-                                      <option value="2">Relative</option>
-                                      <option value="3">Other</option>
-                                      <option value="4">Admin</option>
-                                      <option value="5">Student</option>
-                                  </select>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="login_content--footer">
-                          <div class="login_content-btnBox mb-16">
-                              <button type="submit" class="btn-1 w-100">Sign in</button>
-                          </div>
-                          <p class="font-16 text-gray-600 text-center">
-                              Already have an account?
-                              <a data-bs-dismiss="modal" type="button" class="text-primary login-account fw-medium td-none">Login Here</a>
-                          </p>
-                      </div>
-                  </form>
+            <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
+              <div class="login_content--header mb-48">
+                <h2
+                  class="text-beta text-primary fw-semibold text-center mb-14"
+                >
+                  Sign Up
+                </h2>
+                <p class="font-16 text-gray-600 text-center">
+                  Register your account to <strong>become a Hosteler!</strong>
+                </p>
               </div>
+              <form
+                id="signup-form"
+                class="d-flex login_content--form gap-48 flex-column"
+                action="signup.php"
+                method="POST"
+              >
+                <div
+                  class="d-flex gap-18 flex-column login_content--form-personal"
+                >
+                  <div class="login_content--input">
+                    <label for="validationDefault01" class="form-label"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationDefault01"
+                      name="name"
+                      required
+                    />
+                  </div>
+                  <div class="login_content--input">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Email address</label
+                    >
+                    <input
+                      type="email"
+                      required
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      name="email"
+                      aria-describedby="emailHelp"
+                    />
+                    <div id="emailHelp" class="form-text">
+                      <p class="text-gray-500 m-0">
+                        We'll never share your email with anyone else.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="login_content--input">
+                    <label for="exampleInputPassword1" class="form-label"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      required
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      name="password"
+                    />
+                  </div>
+                  <div class="login_content--input">
+                    <label for="exampleInputPassword2" class="form-label"
+                      >Confirm Password</label
+                    >
+                    <input
+                      type="password"
+                      required
+                      class="form-control"
+                      id="exampleInputPassword2"
+                      name="confirm_password"
+                    />
+                  </div>
+                  <div class="login_content--input">
+                    <label for="phoneNumber" class="form-label"
+                      >Phone Number</label
+                    >
+                    <input
+                      pattern="9\d{9}"
+                      type="text"
+                      required
+                      class="form-control"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      title="Please enter a 10-digit number starting with 9"
+                    />
+                  </div>
+                  <div class="login_content--input">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input
+                      type="date"
+                      required
+                      class="form-control"
+                      id="dob"
+                      name="dob"
+                      title="Please fill your date of birth."
+                    />
+                  </div>
+                </div>
+                <div class="login_content--form-guardian">
+                  <h3 class="text-gamma mb-32 text-black">
+                    Guardian Information
+                  </h3>
+                  <div
+                    class="d-flex gap-18 flex-column login_content--form-guardian"
+                  >
+                    <div class="login_content--input">
+                      <label for="validationDefault03" class="form-label"
+                        >Guardian Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationDefault03"
+                        name="guardianName"
+                        required
+                      />
+                    </div>
+                    <div class="login_content--input">
+                      <label for="phoneNumber1" class="form-label"
+                        >Guardian Phone Number</label
+                      >
+                      <input
+                        pattern="9\d{9}"
+                        type="text"
+                        required
+                        class="form-control"
+                        id="phoneNumber1"
+                        name="guardianPhoneNumber"
+                        title="Please enter a 10-digit number starting with 9"
+                      />
+                    </div>
+                    <div class="login_content--input">
+                      <label for="passport" class="form-label"
+                        >Guardian Passport</label
+                      >
+                      <input
+                        type="number"
+                        required
+                        class="form-control"
+                        id="passport"
+                        name="guardianPassport"
+                        title="Please enter a 10-digit number starting with 9"
+                      />
+                    </div>
+                    <div class="login_content--input">
+                      <label for="form-select-1" class="mb-8"
+                        >Select User</label
+                      >
+                      <select
+                        class="form-select text-secondary"
+                        id="form-select-1"
+                        name="userType"
+                        aria-label="Default select example"
+                      >
+                        <option selected>Parent</option>
+                        <option value="1">Sibling</option>
+                        <option value="2">Relative</option>
+                        <option value="3">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="login_content--footer">
+                  <div class="login_content-btnBox mb-16">
+                    <button type="submit" class="btn-1 w-100">Sign in</button>
+                  </div>
+                  <p class="font-16 text-gray-600 text-center">
+                    Already have an account?
+                    <a
+                      data-bs-dismiss="modal"
+                      type="button"
+                      class="text-primary login-account fw-medium td-none"
+                      >Login Here</a
+                    >
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
       </div>
   </div>
@@ -161,8 +302,11 @@
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary pb-24 pt-24">
         <div class="container">
-          <a class="text-white navbar-brand fw-semibold" href="#section-hero"
-            ><i class="fa-solid fa-house-user"></i> Hamrostel</a
+          <a class="text-white navbar-brand fw-semibold" href="#section-hero">
+            <i
+              class="fa-solid font-18 fa-house-user bg-primary-tint text-primary p-8 rounded-5 me-8"
+            ></i>
+            Hamrostel</a
           >
           <button
             class="navbar-toggler"
@@ -179,7 +323,7 @@
             class="collapse navbar-collapse justify-content-end"
             id="navbarNavAltMarkup"
           >
-            <div class="navbar-nav gap-32 fw-medium fs-24">
+            <div class="navbar-nav gap-32 align-items-center fw-medium fs-24">
               <a
                 class="nav-link text-white fw-semibold"
                 aria-current="page"
@@ -253,7 +397,7 @@
               <div class="hero_content--imgBx">
                 <img
                   class="rounded hero_content--img img-fluid"
-                  src="/image/hostel-hero.jpg"
+                  src="./image/hostel-hero.jpg"
                   alt=""
                 />
               </div>
@@ -397,7 +541,7 @@
                   <div class="rounded-4 rooms_content--details">
                     <div class="rooms_content--imgBx">
                       <img
-                        src="/image/dorms.jpeg"
+                        src="./image/dorms.jpeg"
                         class="rooms_content--img"
                         alt=""
                       />
@@ -463,7 +607,7 @@
                   <div class="rounded-4 rooms_content--details">
                     <div class="rooms_content--imgBx">
                       <img
-                        src="/image/private.jpg"
+                        src="./image/private.jpg"
                         class="rooms_content--img"
                         alt=""
                       />
