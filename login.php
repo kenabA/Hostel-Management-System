@@ -17,9 +17,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['user_ty
     if(is_array($user_data) && !empty($user_data)){
         $_SESSION['email'] = $user_data['email'];
         $_SESSION['name'] = $user_data['name'];
-        header("Location: html/admin-dashboard.php");
+        echo "<script type='text/javascript'>alert('Logged in Successful!')</script>";
+        echo "<script type='text/javascript'>window.location.href = 'html/admin-dashboard.php'</script>";
         exit();
     } else {
-        echo "<p style='color:red; padding:32px; text-align:center;'>No User Found!</p>";
+        echo "<script type='text/javascript'>alert('User Not Found')</script>";
     }
 }

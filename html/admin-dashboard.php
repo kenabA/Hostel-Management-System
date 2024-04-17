@@ -9,6 +9,18 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <style>
+      .dropdown-item:active{
+        background-color: unset !important;
+        color: unset !important;
+      }
+      .nav-link {
+        &.active,
+        &.show {
+          color: #e09200 !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-----=====-----===== SIDENAV =====-----=====----->
@@ -33,7 +45,7 @@
         >
           <li class="offcanvas-navigation-list font-18">
             <a
-              href="./admin-dashboard.html"
+              href="./admin-dashboard.php"
               class="td-none text-gray-500 active-side-nav"
             >
               <i
@@ -92,13 +104,46 @@
 
           <div id="navbarNavAltMarkup">
             <div class="navbar-nav fw-medium">
-              <a
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                class="nav-link btn-5 rounded-5 px-24"
-                >Hi, Kenab <i class="ms-8 fa-solid fa-chevron-down"></i
-              ></a>
+
+            <?php
+
+              session_start();
+              include '../db_connection.php';
+
+              error_reporting(E_ALL);
+              ini_set('display_errors', 1);
+
+              $email = mysqli_real_escape_string($conn, $_SESSION['email']);
+              $sql = "SELECT * FROM users WHERE email='$email'";
+              $query = mysqli_query($conn, $sql);
+
+              if($query) {
+                
+                while($result = mysqli_fetch_assoc($query)) {
+                    $name = $result['name']; 
+                }
+                
+                echo "
+                <div class='dropdown'>
+  
+  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, kenabey</a>
+
+  <ul class='dropdown-menu rounded-3'>
+    <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../index.php'>Logout</a></li>
+  </ul>
+
+</div>
+            
+                ";
+            } else { 
+                echo "User";
+            }
+            
+
+            ?>
+
+
+              
             </div>
           </div>
         </div>
@@ -127,7 +172,28 @@
                     </div>
                     <div class="dashboard-body-block-texts d-flex flex-column">
                       <p class="font-18 m-0 mb-8">Registered Clients</p>
-                      <span class="text-gamma text-gray-700">12</span>
+                      <?php
+
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', 1);
+
+                        $sql = "SELECT COUNT(*) AS total_users FROM users;";
+                        $query = mysqli_query($conn, $sql);
+                        
+                        
+                        if($query) {
+                          
+                          $result = mysqli_fetch_assoc($query);
+                          $totalUsersCount = $result['total_users'];
+
+                          echo "<span class='text-gamma text-gray-700'>$totalUsersCount</span>";
+
+                        } else {
+                          echo "<span class='text-gamma text-gray-700'>No Clients</span>";
+                        }
+
+?>
+                      
                     </div>
                   </div>
                 </div>
@@ -187,33 +253,30 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Kenab Kushal K.C.</td>
-                      <td>kebab.bahadur@gmail.com</td>
-                      <td>9842742225</td>
-                      <td>6th June, 2003</td>
-                      <td>9841321674</td>
-                      <td class="status-active">Active</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Niraj Chaudharya</td>
-                      <td>niraj@gmail.com</td>
-                      <td>9841234587</td>
-                      <td>13th May, 2003</td>
-                      <td>9805618245</td>
-                      <td class="status-active">Active</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Abhishek KC</td>
-                      <td>avsek@gmail.com</td>
-                      <td>9844124587</td>
-                      <td>13th September, 2005</td>
-                      <td>9805618245</td>
-                      <td class="status-inactive">Inactive</td>
-                    </tr>
+                  <?php
+
+                        $sql = "SELECT * FROM users";
+                        $query = mysqli_query($conn, $sql);
+
+                        if (!$result) {
+                          die('Invalid Query');
+                        }
+                        
+                        while($result = mysqli_fetch_assoc($query)) {
+                          echo "<tr>
+                          <th scope='row'>1</th>
+                          <td>".$result['name']."</td>
+                          <td>".$result['email']."</td>
+                          <td>".$result['phone_number']."</td>
+                          <td>".$result['dob']."</td>
+                          <td>".$result['guardian_phone_number']."</td>
+                          <td class='status-active'>Active</td>
+                        </tr>
+                        ";
+                        }
+  
+                        ?>
+
                   </tbody>
                 </table>
               </div>

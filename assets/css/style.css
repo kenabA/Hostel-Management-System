@@ -5265,7 +5265,7 @@ textarea.form-control-lg {
   list-style: none;
 }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-  color: var(--bs-navbar-active-color);
+  color: unset !important;
 }
 .navbar-nav .dropdown-menu {
   position: static;
@@ -18974,6 +18974,7 @@ textarea.form-control-lg {
   font-size: 18px;
   font-weight: 600;
   transition: all 0.3s ease !important;
+  border-radius: 4px;
 }
 .btn-5:hover, .btn-5:active {
   background-color: #ffeac2;
