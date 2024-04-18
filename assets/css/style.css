@@ -19462,4 +19462,11 @@ label {
   height: 100%;
 }
 
+.custom-toast {
+  position: absolute;
+  color: white;
+  background-color: red !important;
+  border: 2px solid red !important;
+}
+
 /*# sourceMappingURL=style.css.map */

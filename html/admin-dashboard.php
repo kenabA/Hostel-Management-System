@@ -287,7 +287,7 @@
 
                           echo "<tr>
                           
-                          <th scope='row'>1</th>
+                          <th scope='row'>".$result['id']."</th>
                           <td>".$result['name']."</td>
                           <td>".$result['email']."</td>
                           <td>".$result['phone_number']."</td>

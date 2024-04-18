@@ -1,3 +1,92 @@
+<?php 
+
+if (isset($_GET['add'])) {
+  if ($_GET['add'] == 'success') {
+      echo "
+      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Add Client</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          Sucessfully added new client!
+        </div>
+      </div>
+    </div>
+      ";
+
+  } 
+  
+  if ($_GET['add'] == 'error') {
+      echo  "
+      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Add Client</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          Failed to add new client!
+        </div>
+      </div>
+    </div>
+      ";
+  }
+}
+if (isset($_GET['edit'])) {
+  if ($_GET['edit'] == 'success') {
+      echo "
+      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Edit Client</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          Change saved successfully!
+        </div>
+      </div>
+    </div>
+      ";
+
+  } 
+  
+  if ($_GET['edit'] == 'error') {
+      echo  "
+      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Edit Client</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          Unable to make changes!
+        </div>
+      </div>
+    </div>
+      ";
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -139,11 +228,8 @@
             } else { 
                 echo "User";
             }
-            
 
             ?>
-
-
               
             </div>
           </div>
@@ -160,11 +246,9 @@
               class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between"
             >
               <h2 class="text-beta-1">Client</h2>
-              <button  type="button" data-toggle="modal"
-                       class="btn btn-add bg-success text-white" data-target="#staticBackdrop2">
+              <a href="./add.php" class="btn btn-add d-flex align-items-center">
                 <i class="fa-solid fa-plus me-8"></i> Add
-              </button>
-
+              </a>
           </div>
    
             <div class="dashboard-student-list">
@@ -197,19 +281,19 @@
                   while($result = mysqli_fetch_assoc($query)) {
 
                     echo "<tr>
-                    <th scope='row'>1</th>
+                    <th scope='row'>".$result['id']."</th>
                     <td>".$result['name']."</td>
                     <td>".$result['email']."</td>
                     <td>".$result['phone_number']."</td>
                     <td>".$result['dob']."</td>
                     <td>".$result['guardian_phone_number']."</td>
                     <td class='d-flex gap-12'>
-                    <button class='btn btn-edit bg-warning text-black'>
+                    <a href='./edit.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>
-                    </button>
-                    <button class='btn btn-delete bg-danger text-white'>
+                    </a>
+                    <a href='./delete.php?id=$result[id]' class='btn btn-delete bg-danger text-white'>
                       <i class='fa-solid fa-trash'></i>
-                    </button>
+                    </a>
                   </td>
                   </tr>
                   ";
