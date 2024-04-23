@@ -1,6 +1,7 @@
 <?php 
 
 if (isset($_GET['add'])) {
+
   if ($_GET['add'] == 'success') {
       echo "
       <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
@@ -41,8 +42,48 @@ if (isset($_GET['add'])) {
     </div>
       ";
   }
+
+  if( ($_GET['add'] == 'duplicate')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Email already exists. Please try with another!
+        </div>
+      </div>
+    </div>
+    ";
+  } 
+  
+  if(($_GET['add'] == 'unmatched')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    
+    ";
+  }
+  
 }
+
 if (isset($_GET['edit'])) {
+
   if ($_GET['edit'] == 'success') {
       echo "
       <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
@@ -62,8 +103,8 @@ if (isset($_GET['edit'])) {
     </div>
       ";
 
-  } 
-  
+  }   
+
   if ($_GET['edit'] == 'error') {
       echo  "
       <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
@@ -83,6 +124,31 @@ if (isset($_GET['edit'])) {
     </div>
       ";
   }
+
+}
+
+if (isset($_GET['delete'])) {
+  
+  if ($_GET['delete'] == 'success') {
+      echo "
+      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Delete Client</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          Client deleted Successfully!
+        </div>
+      </div>
+    </div>
+      ";
+
+  } 
 }
 
 ?>
@@ -170,8 +236,8 @@ if (isset($_GET['edit'])) {
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
 
-              $email = mysqli_real_escape_string($conn, $_SESSION['email']);
-              $sql = "SELECT * FROM users WHERE email='$email'";
+              $id = mysqli_real_escape_string($conn, $_SESSION['id']);
+              $sql = "SELECT * FROM admin WHERE id='$id'";
               $query = mysqli_query($conn, $sql);
 
               if($query) {

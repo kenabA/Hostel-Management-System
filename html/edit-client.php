@@ -31,10 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $dob = $result['dob'];
   $guardianName = $result['guardian_name'];
   $guardianPhoneNumber = $result['guardian_phone_number'];
-  $guardianPassport = $result['guardian_passport'];
-  $userType = $result['user_type'];
-  
-
+  $guardianCitizen = $result['guardian_citizen'];
+  $guardianType = $result['guardian_type'];
+  $foodCategory = $result['food_category'];
   
 } else {
   
@@ -45,11 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $dob = $_POST['dob'];
   $guardianName = $_POST['guardianName'];
   $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
-  $guardianPassport = $_POST['guardianPassport'];
-  $userType = $_POST['userType'];
+  $guardianCitizen = $_POST['guardianPassport'];
+  $foodCategory = $_POST['foodCategory'];
+  $guardianType = $_POST['userType'];
 
   $id = $_GET["id"];
-  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_passport = '$guardianPassport', user_type = '$userType' WHERE id = '$id';";
+  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_citizen = '$guardianCitizen', guardian_type = '$guardianType', food_category = '$foodCategory' WHERE id = '$id';";
 
   echo $sql;
 
@@ -71,210 +71,123 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hamrostel</title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-  </head>
-  <body>
-    <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
-      <header class="login_content--header mb-48">
-        <div class="login_content--header-main">
-          <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
-          <p class="font-16 text-gray-600 text-center">
-           Make changes to the client's details!
-          </p>
-        </div>
-      </header>
-      <form
-        class="d-flex login_content--form gap-48 flex-column"
-        method="POST"
-      >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamrostel</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
+    <header class="login_content--header mb-48">
+      <div class="login_content--header-main">
+        <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
+        <p class="font-16 text-gray-600 text-center">
+          Make changes to the client's details!
+        </p>
+      </div>
+    </header>
+    <form class="d-flex login_content--form gap-48 flex-column" method="POST">
       <input type="hidden" value="<?php echo $id;?>">
-        <div class="d-flex gap-18 flex-column login_content--form-personal">
-          <div class="login_content--input">
-            <label for="validationDefault01" class="form-label">Name</label>
-            <input
-            value="<?php echo $name; ?>"
-              type="text"
-
-              class="form-control"
-              id="validationDefault01"
-              name="name"
-              required
-            />
-          </div>
-          <div class="login_content--input">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
-            <input
-            value="<?php echo $email; ?>"
-              type="email"
-              required
-              class="form-control"
-              id="exampleInputEmail1"
-              name="email"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" class="form-text">
-              <p class="text-gray-500 m-0">
-                We'll never share your email with anyone else.
-              </p>
-            </div>
-          </div>
-          <div class="login_content--input">
-            <label for="exampleInputPassword1" class="form-label"
-              >Password</label
-            >
-            <input
-            value="<?php echo $password; ?>"
-              type="password"
-              required
-              class="form-control"
-              id="exampleInputPassword1"
-              name="password"
-            />
-          </div>
-          <div class="login_content--input">
-            <label for="exampleInputPassword2" class="form-label"
-              >Confirm Password</label
-            >
-            <input
-            value="<?php echo $password; ?>"
-              type="password"
-              required
-              class="form-control"
-              id="exampleInputPassword2"
-              name="confirm_password"
-            />
-          </div>
-          <div class="login_content--input">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input
-            value="<?php echo $phoneNumber; ?>"
-              pattern="9\d{9}"
-              type="text"
-              required
-              class="form-control"
-              id="phoneNumber"
-              name="phoneNumber"
-              title="Please enter a 10-digit number starting with 9"
-            />
-          </div>
-          <div class="login_content--input">
-            <label for="dob" class="form-label">Date of Birth</label>
-            <input
-            value="<?php echo $dob; ?>"
-              type="date"
-              required
-              class="form-control"
-              id="dob"
-              name="dob"
-              title="Please fill your date of birth."
-            />
+      <div class="d-flex gap-18 flex-column login_content--form-personal">
+        <div class="login_content--input">
+          <label for="validationDefault01" class="form-label">Name</label>
+          <input value="<?php echo $name; ?>" type="text" class="form-control" id="validationDefault01" name="name"
+            required />
+        </div>
+        <div class="login_content--input">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input value="<?php echo $email; ?>" type="email" required class="form-control" id="exampleInputEmail1"
+            name="email" aria-describedby="emailHelp" />
+          <div id="emailHelp" class="form-text">
+            <p class="text-gray-500 m-0">
+              We'll never share your email with anyone else.
+            </p>
           </div>
         </div>
-        <div class="login_content--form-guardian mb-24">
-          <h3 class="text-gamma mb-32 text-black">Guardian Information</h3>
-          <div class="d-flex gap-18 flex-column login_content--form-guardian">
-            <div class="login_content--input">
-              <label for="validationDefault03" class="form-label"
-                >Guardian Name</label
-              >
-              <input
-              value="<?php echo $guardianName; ?>"
-                type="text"
-                class="form-control"
-                id="validationDefault03"
-                name="guardianName"
-                required
-              />
-            </div>
-            <div class="login_content--input">
-              <label for="phoneNumber1" class="form-label"
-                >Guardian Phone Number</label
-              >
-              <input
-              value="<?php echo $guardianPhoneNumber; ?>"
-                pattern="9\d{9}"
-                type="text"
-                required
-                class="form-control"
-                id="phoneNumber1"
-                name="guardianPhoneNumber"
-                title="Please enter a 10-digit number starting with 9"
-              />
-            </div>
-            <div class="login_content--input">
-              <label for="passport" class="form-label">Guardian Passport</label>
-              <input
-              value="<?php echo $guardianPassport; ?>"
-                type="number"
-                required
-                class="form-control"
-                id="passport"
-                name="guardianPassport"
-                title="Please enter a 10-digit number starting with 9"
-              />
-            </div>
-            <div class="login_content--input">
-              <label for="form-select-1" class="mb-8">Select User</label>
-              <select
-                class="form-select text-secondary"
-                id="form-select-1"
-                name="userType"
-                aria-label="Default select example"
-              >
-                <option selected>Parent</option>
-                <option value="1">Sibling</option>
-                <option value="2">Relative</option>
-                <option value="3">Other</option>
-              </select>
-            </div>
+        <div class="login_content--input">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input value="<?php echo $password; ?>" type="password" required class="form-control"
+            id="exampleInputPassword1" name="password" />
+        </div>
+        <div class="login_content--input">
+          <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+          <input value="<?php echo $password; ?>" type="password" required class="form-control"
+            id="exampleInputPassword2" name="confirm_password" />
+        </div>
+        <div class="login_content--input">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input value="<?php echo $phoneNumber; ?>" pattern="9\d{9}" type="text" required class="form-control"
+            id="phoneNumber" name="phoneNumber" title="Please enter a 10-digit number starting with 9" />
+        </div>
+        <div class="login_content--input">
+          <label for="form-select-fc" class="mb-8">Select Food Category</label>
+          <select class="form-select" id="form-select-fc" name="foodCategory" aria-label="Default select example">
+            <option selected value="Non - Veg">Non - Veg</option>
+            <option value="Veg">Vegetarian</option>
+          </select>
+        </div>
+        <div class="login_content--input">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input value="<?php echo $dob; ?>" type="date" required class="form-control" id="dob" name="dob"
+            title="Please fill your date of birth." />
+        </div>
+      </div>
+      <div class="login_content--form-guardian mb-24">
+        <h3 class="text-gamma mb-32 text-black">Guardian Information</h3>
+        <div class="d-flex gap-18 flex-column login_content--form-guardian">
+          <div class="login_content--input">
+            <label for="validationDefault03" class="form-label">Guardian Name</label>
+            <input value="<?php echo $guardianName; ?>" type="text" class="form-control" id="validationDefault03"
+              name="guardianName" required />
+          </div>
+          <div class="login_content--input">
+            <label for="phoneNumber1" class="form-label">Guardian Phone Number</label>
+            <input value="<?php echo $guardianPhoneNumber; ?>" pattern="9\d{9}" type="text" required
+              class="form-control" id="phoneNumber1" name="guardianPhoneNumber"
+              title="Please enter a 10-digit number starting with 9" />
+          </div>
+          <div class="login_content--input">
+            <label for="passport" class="form-label">Guardian Citizen Number</label>
+            <input value="<?php echo $guardianCitizen; ?>" type="number" required class="form-control" id="passport"
+              name="guardianPassport" title="Please enter a 10-digit number starting with 9" />
+          </div>
+          <div class="login_content--input">
+            <label for="form-select-1" class="mb-8">Select User</label>
+            <select class="form-select text-secondary" id="form-select-1" name="userType"
+              aria-label="Default select example">
+              <option selected>Parent</option>
+              <option value="1">Sibling</option>
+              <option value="2">Relative</option>
+              <option value="3">Other</option>
+            </select>
           </div>
         </div>
-        <div class="login_content--footer">
-          <div class="login_content-btnBox d-flex gap-24">
-            <a
-            role="button"
-              type="submit"
-              href="./client.php"
-              class="btn-3 w-100 text-decoration-none text-center"
-              >Back</a
-            >
-            <button type="submit" class="btn-1 w-100">Save Changes</button>
-          </div>
+      </div>
+      <div class="login_content--footer">
+        <div class="login_content-btnBox d-flex gap-24">
+          <a role="button" type="submit" href="./client.php"
+            class="btn-3 w-100 text-decoration-none text-center">Back</a>
+          <button type="submit" class="btn-1 w-100">Save Changes</button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
+  </div>
 
-    <!-----=====-----===== Scripts =====-----=====----->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./js/swiper.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/4cbeaa27da.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
+  <!-----=====-----===== Scripts =====-----=====----->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/swiper.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+  </script>
+  <script src="https://kit.fontawesome.com/4cbeaa27da.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
-    <script src="./js/script.js"></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
+  <script src="./js/script.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>

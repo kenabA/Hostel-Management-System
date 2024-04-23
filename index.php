@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if (isset($_GET['login'])) {
   if ($_GET['login'] == 'false') {
       echo "
@@ -20,6 +23,78 @@ if (isset($_GET['login'])) {
 
   } 
 }
+
+if (isset($_GET['signup'])) {
+  if ($_GET['signup'] == 'true') {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Successfully sent the Registration request to the Administrator.
+        </div>
+      </div>
+    </div>
+      ";
+
+  } elseif( ($_GET['signup'] == 'duplicate')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Email already exists. Please try with another!
+        </div>
+      </div>
+    </div>
+    ";
+  } elseif(($_GET['signup'] == 'unmatched')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    
+    ";
+  }else
+   {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Client Registration</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Apologies, but we couldn't process the registration due to some error.
+        </div>
+      </div>
+    </div>
+      ";
+          }
+}
+
   ?>
 
 
@@ -117,7 +192,7 @@ if (isset($_GET['login'])) {
                 Register your account to <strong>become a Hosteler!</strong>
               </p>
             </div>
-            <form id="signup-form" class="d-flex login_content--form gap-48 flex-column" action="signup.php"
+            <form id="signup-form" class="d-flex login_content--form gap-48 flex-column" action="./signup.php"
               method="POST">
               <div class="d-flex gap-18 flex-column login_content--form-personal">
                 <div class="login_content--input">
@@ -149,10 +224,19 @@ if (isset($_GET['login'])) {
                     title="Please enter a 10-digit number starting with 9" />
                 </div>
                 <div class="login_content--input">
+                  <label for="form-select-fc" class="mb-8">Select Food Category</label>
+                  <select class="form-select " id="form-select-fc" name="foodCategory"
+                    aria-label="Default select example">
+                    <option selected value="Non - Veg">Non - Veg</option>
+                    <option value="Veg">Vegetarian</option>
+                  </select>
+                </div>
+                <div class="login_content--input">
                   <label for="dob" class="form-label">Date of Birth</label>
                   <input type="date" required class="form-control" id="dob" name="dob"
                     title="Please fill your date of birth." />
                 </div>
+
               </div>
               <div class="login_content--form-guardian">
                 <h3 class="text-gamma mb-32 text-black">
@@ -169,7 +253,7 @@ if (isset($_GET['login'])) {
                       name="guardianPhoneNumber" title="Please enter a 10-digit number starting with 9" />
                   </div>
                   <div class="login_content--input">
-                    <label for="passport" class="form-label">Guardian Passport</label>
+                    <label for="passport" class="form-label">Guardian Citizen Number</label>
                     <input type="number" required class="form-control" id="passport" name="guardianPassport"
                       title="Please enter a 10-digit number starting with 9" />
                   </div>

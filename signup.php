@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 include 'db_connection.php';
 
@@ -7,22 +11,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm_password'];
     $phoneNumber = $_POST['phoneNumber'];
     $dob = $_POST['dob'];
     $guardianName = $_POST['guardianName'];
     $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
     $guardianPassport = $_POST['guardianPassport'];
-    $userType = $_POST['userType'];
+    $guardianType = $_POST['userType'];
+    $foodCategory = $_POST['foodCategory'];
+    $status = "Pending";
 
-    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_passport, user_type)
-            VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$userType')";
+    $checkSQL = "SELECT * FROM users WHERE email='$email'";
+  
+    $checkQuery = mysqli_query($conn, $checkSQL);
+    
+    $result = mysqli_fetch_assoc($checkQuery);
+
+    if($password != $confirmPassword){
+        header("Location: ./index.php?signup=unmatched");
+        exit;
+    }
+  
+  if($result) {
+    header("Location: ./index.php?signup=duplicate");
+    exit;
+  } else{
+
+    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
+    VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
 
     if( mysqli_query($conn, $sql)){
-        echo "<script type='text/javascript'>alert('Successfully signed up!');</script>";
+        header("Location: ./index.php?signup=true");
     } else{
-        echo "<script type='text/javascript'>alert('Could not add data.')</script>";
+        header("Location: ./index.php?signup=false");
     };
-
+}
 }
 
 ?>

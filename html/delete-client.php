@@ -13,6 +13,4 @@ if (isset($_GET["id"])) {
 
 } 
 
-header("Location: ./client.php");
-
-
+header("Location: ./client.php?delete=success");
