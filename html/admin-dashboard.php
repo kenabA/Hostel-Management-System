@@ -56,20 +56,20 @@
           </li>
           <li class="offcanvas-navigation-list font-18">
             <a
-              href="./admin.html"
-              class="td-none text-gray-500 non-active-side-nav"
-            >
-              <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
-              Rooms</a
-            >
-          </li>
-          <li class="offcanvas-navigation-list font-18">
-            <a
               href="./client.php"
               class="td-none text-gray-500 non-active-side-nav"
             >
               <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
               Client</a
+            >
+          </li>
+          <li class="offcanvas-navigation-list font-18">
+            <a
+              href="./admin.html"
+              class="td-none text-gray-500 non-active-side-nav"
+            >
+              <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
+              Rooms</a
             >
           </li>
           <li class="offcanvas-navigation-list font-18">
@@ -126,7 +126,7 @@
                 echo "
                 <div class='dropdown'>
   
-  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, kenabey</a>
+  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, $name</a>
 
   <ul class='dropdown-menu rounded-3'>
     <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../index.php'>Logout</a></li>

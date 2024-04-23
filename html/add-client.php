@@ -1,72 +1,39 @@
-<?php 
+<?php
 
 session_start();
 include '../db_connection.php';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $dob = $_POST['dob'];
+    $guardianName = $_POST['guardianName'];
+    $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
+    $guardianPassport = $_POST['guardianPassport'];
+    $userType = $_POST['userType'];
+    $status = "Pending";
 
-  if ( !isset($_GET["id"])) {
-    header("location: ./client.php");
-    exit;
-  }
-  
-  $id = $_GET["id"];
-  
-  $sql = "SELECT * FROM users WHERE id='$id'";
-  
-  $query = mysqli_query($conn, $sql);
-  
-  $result = mysqli_fetch_assoc($query);
-  
-  if(!$result) {
-    header("location: ./client.php");
-    exit;
-  }
+    
 
-  $name = $result['name'];
-  $email = $result['email'];
-  $password = $result['password'];
-  $phoneNumber = $result['phone_number'];
-  $dob = $result['dob'];
-  $guardianName = $result['guardian_name'];
-  $guardianPhoneNumber = $result['guardian_phone_number'];
-  $guardianPassport = $result['guardian_passport'];
-  $userType = $result['user_type'];
-  $status = "Pending";
+    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_passport, user_type, status)
+            VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$userType', '$status')";
 
-  
-} else {
-  
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $phoneNumber = $_POST['phoneNumber'];
-  $dob = $_POST['dob'];
-  $guardianName = $_POST['guardianName'];
-  $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
-  $guardianPassport = $_POST['guardianPassport'];
-  $userType = $_POST['userType'];
-  $status = "Pending";
-  $id = $_GET["id"];
-  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_passport = '$guardianPassport', user_type = '$userType', status = 'Pending' WHERE id = '$id';";
+    $result = mysqli_query($conn, $sql);
 
-  echo $sql;
+    if($result){
 
-  $result = mysqli_query($conn, $sql);
+      header("Location: ./client.php?add=success");
 
-  if($result){
+    } else{
 
-    header("Location: ./client.php?edit=success");
+      header("Location: ./client.php?add=error");
 
-  } else{
+    };
 
-    header("Location: ./client.php?edit=error");
-
-  };
-  
-}
-
+} 
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
       <header class="login_content--header mb-48">
         <div class="login_content--header-main">
-          <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
+          <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Add Client</h2>
           <p class="font-16 text-gray-600 text-center">
-           Make changes to the client's details!
+           Include a new <strong>Hosteler!</strong>
           </p>
         </div>
       </header>
@@ -95,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         class="d-flex login_content--form gap-48 flex-column"
         method="POST"
       >
-      <input type="hidden" value="<?php echo $id;?>">
         <div class="d-flex gap-18 flex-column login_content--form-personal">
           <div class="login_content--input">
             <label for="validationDefault01" class="form-label">Name</label>
@@ -146,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
               >Confirm Password</label
             >
             <input
-            value="<?php echo $password; ?>"
+            value="<?php echo $confirm_password; ?>"
               type="password"
               required
               class="form-control"
@@ -248,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
               class="btn-3 w-100 text-decoration-none text-center"
               >Back</a
             >
-            <button type="submit" class="btn-1 w-100">Save Changes</button>
+            <button type="submit" class="btn-1 w-100">Add Client</button>
           </div>
         </div>
       </form>

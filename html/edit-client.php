@@ -1,39 +1,72 @@
-<?php
+<?php 
 
 session_start();
 include '../db_connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $dob = $_POST['dob'];
-    $guardianName = $_POST['guardianName'];
-    $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
-    $guardianPassport = $_POST['guardianPassport'];
-    $userType = $_POST['userType'];
-    $status = "Pending";
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    
+  if ( !isset($_GET["id"])) {
+    header("location: ./client.php");
+    exit;
+  }
+  
+  $id = $_GET["id"];
+  
+  $sql = "SELECT * FROM users WHERE id='$id'";
+  
+  $query = mysqli_query($conn, $sql);
+  
+  $result = mysqli_fetch_assoc($query);
+  
+  if(!$result) {
+    header("location: ./client.php");
+    exit;
+  }
 
-    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_passport, user_type, status)
-            VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$userType', '$status')";
+  $name = $result['name'];
+  $email = $result['email'];
+  $password = $result['password'];
+  $phoneNumber = $result['phone_number'];
+  $dob = $result['dob'];
+  $guardianName = $result['guardian_name'];
+  $guardianPhoneNumber = $result['guardian_phone_number'];
+  $guardianPassport = $result['guardian_passport'];
+  $userType = $result['user_type'];
+  
 
-    $result = mysqli_query($conn, $sql);
+  
+} else {
+  
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $phoneNumber = $_POST['phoneNumber'];
+  $dob = $_POST['dob'];
+  $guardianName = $_POST['guardianName'];
+  $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
+  $guardianPassport = $_POST['guardianPassport'];
+  $userType = $_POST['userType'];
 
-    if($result){
+  $id = $_GET["id"];
+  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_passport = '$guardianPassport', user_type = '$userType' WHERE id = '$id';";
 
-      header("Location: ./client.php?add=success");
+  echo $sql;
 
-    } else{
+  $result = mysqli_query($conn, $sql);
 
-      header("Location: ./client.php?add=error");
+  if($result){
 
-    };
+    header("Location: ./client.php?edit=success");
 
-} 
+  } else{
+
+    header("Location: ./client.php?edit=error");
+
+  };
+  
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
       <header class="login_content--header mb-48">
         <div class="login_content--header-main">
-          <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Add Client</h2>
+          <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
           <p class="font-16 text-gray-600 text-center">
-           Include a new <strong>Hosteler!</strong>
+           Make changes to the client's details!
           </p>
         </div>
       </header>
@@ -62,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         class="d-flex login_content--form gap-48 flex-column"
         method="POST"
       >
+      <input type="hidden" value="<?php echo $id;?>">
         <div class="d-flex gap-18 flex-column login_content--form-personal">
           <div class="login_content--input">
             <label for="validationDefault01" class="form-label">Name</label>
@@ -112,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               >Confirm Password</label
             >
             <input
-            value="<?php echo $confirm_password; ?>"
+            value="<?php echo $password; ?>"
               type="password"
               required
               class="form-control"

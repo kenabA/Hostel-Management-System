@@ -113,6 +113,7 @@ if (isset($_GET['edit'])) {
   </head>
   <body>
 
+  
     <!-----=====-----===== SIDENAV =====-----=====----->
     <div
       class="offcanvas offcanvas-start"
@@ -146,20 +147,20 @@ if (isset($_GET['edit'])) {
           </li>
           <li class="offcanvas-navigation-list font-18">
             <a
-              href="./admin.html"
-              class="td-none text-gray-500 non-active-side-nav"
-            >
-              <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
-              Rooms</a
-            >
-          </li>
-          <li class="offcanvas-navigation-list font-18">
-            <a
               href="./client.php"
               class="td-none text-gray-500 active-side-nav"
             >
               <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
               Client</a
+            >
+          </li>
+          <li class="offcanvas-navigation-list font-18">
+            <a
+              href="./admin.html"
+              class="td-none text-gray-500 non-active-side-nav"
+            >
+              <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
+              Rooms</a
             >
           </li>
           <li class="offcanvas-navigation-list font-18">
@@ -216,7 +217,7 @@ if (isset($_GET['edit'])) {
                 echo "
                 <div class='dropdown'>
   
-  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, kenabey</a>
+  <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, $name</a>
 
   <ul class='dropdown-menu rounded-3'>
     <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../index.php'>Logout</a></li>
@@ -230,6 +231,7 @@ if (isset($_GET['edit'])) {
             }
 
             ?>
+            
               
             </div>
           </div>
@@ -246,7 +248,7 @@ if (isset($_GET['edit'])) {
               class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between"
             >
               <h2 class="text-beta-1">Client</h2>
-              <a href="./add.php" class="btn btn-add d-flex align-items-center">
+              <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
                 <i class="fa-solid fa-plus me-8"></i> Add
               </a>
           </div>
@@ -288,17 +290,26 @@ if (isset($_GET['edit'])) {
                     <td>".$result['dob']."</td>
                     <td>".$result['guardian_phone_number']."</td>
                     <td class='d-flex gap-12'>
-                    <a href='./edit.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
+                    <a href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>
                     </a>
-                    <a href='./delete.php?id=$result[id]' class='btn btn-delete bg-danger text-white'>
+                    <button onclick='deleteClient()' class='btn btn-delete bg-danger text-white'>
                       <i class='fa-solid fa-trash'></i>
-                    </a>
+                    </button>
                   </td>
                   </tr>
+
+                  <script>
+                  function deleteClient(){
+                    var confirmation = confirm('Do you really want to delete this client');
+                    if (confirmation) {
+                      window.location.href = 'delete-client.php?id=$result[id]';
+                    }
+                  }
+                  </script>
+                
                   ";
                   }
-
 ?>
 
                   </tbody>
