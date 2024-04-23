@@ -22,7 +22,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['user_ty
         $_SESSION['email'] = $user_data['email'];
         $_SESSION['name'] = $user_data['name'];
 
-        echo "<script type='text/javascript'>window.location.href = 'html/student-dashboard.php?login=true'</script>";
+        header("Location: ./html/student-panel/student-dashboard.php?login=true");
         exit();
     } else {
         header("Location: ./index.php?login=false");
@@ -40,7 +40,7 @@ else {
         $_SESSION['email'] = $user_data['email'];
         $_SESSION['name'] = $user_data['name'];
         
-        header("Location: ./html/admin-dashboard.php?login=true");
+        header("Location: ./html/admin-panel/admin-dashboard.php?login=true");
 
         exit();
     } else {

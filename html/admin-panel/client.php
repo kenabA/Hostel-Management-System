@@ -160,7 +160,7 @@ if (isset($_GET['delete'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hamrostel</title>
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
   .dropdown-item:active {
@@ -231,7 +231,7 @@ if (isset($_GET['delete'])) {
             <?php
 
               session_start();
-              include '../db_connection.php';
+              include '../../db_connection.php';
 
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
@@ -252,7 +252,7 @@ if (isset($_GET['delete'])) {
   <a type='button' data-bs-toggle='dropdown' aria-expanded='false' class='nav-link dropdown-toggle btn-5 px-24 rounded-3'>Hi, $name</a>
 
   <ul class='dropdown-menu rounded-3'>
-    <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../index.php'>Logout</a></li>
+    <li class='d-flex gap-8 align-items-center justify-content-center'><i class='fa-solid text-primary fa-power-off'></i> <a class='logout-link text-gray-600 text-decoration-none' href='../../index.php'>Logout</a></li>
   </ul>
 
 </div>
@@ -357,9 +357,6 @@ if (isset($_GET['delete'])) {
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/4cbeaa27da.js" crossorigin="anonymous"></script>
-
-  <script src="../js/script.js"></script>
-
 </body>
 
 </html>

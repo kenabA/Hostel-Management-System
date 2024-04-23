@@ -1,56 +1,72 @@
-<?php
+<?php 
 
 session_start();
-include '../db_connection.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm_password'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $dob = $_POST['dob'];
-    $guardianName = $_POST['guardianName'];
-    $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
-    $guardianPassport = $_POST['guardianPassport'];
-    $guardianType = $_POST['userType'];
-    $foodCategory = $_POST['foodCategory'];
-    $status = "Pending";
+include '../../db_connection.php';
 
 
-    $checkSQL = "SELECT * FROM users WHERE email='$email'";
-  
-    $checkQuery = mysqli_query($conn, $checkSQL);
-    
-    $result = mysqli_fetch_assoc($checkQuery);
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    if($password != $confirmPassword){
-        header("Location: ./client.php?add=unmatched");
-        exit;
-    }
-  
-  if($result) {
-    header("Location: ./client.php?add=duplicate");
+  if ( !isset($_GET["id"])) {
+    header("location: ./client.php");
     exit;
+  }
+  
+  $id = $_GET["id"];
+  
+  $sql = "SELECT * FROM users WHERE id='$id'";
+  
+  $query = mysqli_query($conn, $sql);
+  
+  $result = mysqli_fetch_assoc($query);
+  
+  if(!$result) {
+    header("location: ./client.php");
+    exit;
+  }
+
+  $name = $result['name'];
+  $email = $result['email'];
+  $password = $result['password'];
+  $phoneNumber = $result['phone_number'];
+  $dob = $result['dob'];
+  $guardianName = $result['guardian_name'];
+  $guardianPhoneNumber = $result['guardian_phone_number'];
+  $guardianCitizen = $result['guardian_citizen'];
+  $guardianType = $result['guardian_type'];
+  $foodCategory = $result['food_category'];
+  
+} else {
+  
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $phoneNumber = $_POST['phoneNumber'];
+  $dob = $_POST['dob'];
+  $guardianName = $_POST['guardianName'];
+  $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
+  $guardianCitizen = $_POST['guardianPassport'];
+  $foodCategory = $_POST['foodCategory'];
+  $guardianType = $_POST['userType'];
+
+  $id = $_GET["id"];
+  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_citizen = '$guardianCitizen', guardian_type = '$guardianType', food_category = '$foodCategory' WHERE id = '$id';";
+
+  echo $sql;
+
+  $result = mysqli_query($conn, $sql);
+
+  if($result){
+
+    header("Location: ./client.php?edit=success");
+
   } else{
 
-    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
-            VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
+    header("Location: ./client.php?edit=error");
 
-    $result = mysqli_query($conn, $sql);
+  };
+  
+}
 
-    if($result){
-
-      header("Location: ./client.php?add=success");
-
-    } else{
-
-      header("Location: ./client.php?add=error");
-
-    };
-  }
-} 
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hamrostel</title>
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
@@ -68,13 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
     <header class="login_content--header mb-48">
       <div class="login_content--header-main">
-        <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Add Client</h2>
+        <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
         <p class="font-16 text-gray-600 text-center">
-          Include a new <strong>Hosteler!</strong>
+          Make changes to the client's details!
         </p>
       </div>
     </header>
     <form class="d-flex login_content--form gap-48 flex-column" method="POST">
+      <input type="hidden" value="<?php echo $id;?>">
       <div class="d-flex gap-18 flex-column login_content--form-personal">
         <div class="login_content--input">
           <label for="validationDefault01" class="form-label">Name</label>
@@ -93,11 +110,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="login_content--input">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" required class="form-control" id="exampleInputPassword1" name="password" />
+          <input value="<?php echo $password; ?>" type="password" required class="form-control"
+            id="exampleInputPassword1" name="password" />
         </div>
         <div class="login_content--input">
           <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-          <input value="<?php echo $confirm_password; ?>" type="password" required class="form-control"
+          <input value="<?php echo $password; ?>" type="password" required class="form-control"
             id="exampleInputPassword2" name="confirm_password" />
         </div>
         <div class="login_content--input">
@@ -134,11 +152,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <div class="login_content--input">
             <label for="passport" class="form-label">Guardian Citizen Number</label>
-            <input value="<?php echo $guardianPassport; ?>" type="number" required class="form-control" id="passport"
+            <input value="<?php echo $guardianCitizen; ?>" type="number" required class="form-control" id="passport"
               name="guardianPassport" title="Please enter a 10-digit number starting with 9" />
           </div>
           <div class="login_content--input">
-            <label for="form-select-1" class="mb-8">Select Guardian Type</label>
+            <label for="form-select-1" class="mb-8">Select User</label>
             <select class="form-select text-secondary" id="form-select-1" name="userType"
               aria-label="Default select example">
               <option selected>Parent</option>
@@ -153,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login_content-btnBox d-flex gap-24">
           <a role="button" type="submit" href="./client.php"
             class="btn-3 w-100 text-decoration-none text-center">Back</a>
-          <button type="submit" class="btn-1 w-100">Add Client</button>
+          <button type="submit" class="btn-1 w-100">Save Changes</button>
         </div>
       </div>
     </form>
