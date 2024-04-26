@@ -227,13 +227,12 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
               </div>
             </div>
           </div>
-          <div class="d-flex gap-48 justify-content-center align-items-center">
-            <div class="py-48 rounded-2" id="piechart" style="width:100%;  height: 400px">
+          <div class="d-flex gap-48 mb-48 justify-content-center align-items-center">
+            <div class="border-gray-200 border border-2 rounded-4" id="piechart" style="width:100%;  height: 400px">
             </div>
-            <div class="py-48 rounded-2" id="donutchart" style="width:100%;  height: 400px">
+            <div class="border-gray-200 border border-2 rounded-4" id="donutchart" style="width:100%;  height: 400px">
             </div>
           </div>
-
           <div class="dashboard-student-list">
             <div class="dashboard-student-list-header mb-24">
               <h3 class="text-gamma">Hosteler List</h3>

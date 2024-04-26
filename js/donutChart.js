@@ -8,8 +8,9 @@ function drawChart() {
   ]);
 
   var options = {
+    backgroundColor: "#f7f7f7",
     title: "Food Category Chart",
-    pieHole: 0.9,
+    pieHole: 0.3,
   };
 
   var chart = new google.visualization.PieChart(
