@@ -227,11 +227,34 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
               </div>
             </div>
           </div>
-          <div class="d-flex gap-48 mb-48 justify-content-center align-items-center">
-            <div class="border-gray-200 border border-2 rounded-4" id="piechart" style="width:100%;  height: 400px">
+          <div class="d-flex gap-24 mb-48 justify-content-center align-items-center">
+            <?php 
+            
+            $sql = "SELECT
+            SUM(CASE WHEN food_category = 'Non - Veg' THEN 1 ELSE 0 END) AS count_non_veg,
+            SUM(CASE WHEN food_category = 'Vegetarian' THEN 1 ELSE 0 END) AS count_veg
+        FROM users;
+        ";
+            $query = mysqli_query($conn, $sql);
+            
+            if($query) {
+              
+              $result = mysqli_fetch_assoc($query);
+              $nonVegCount = $result['count_non_veg'];
+              $vegCount = $result['count_veg'];
+
+              echo "<div class='border-gray-200 border border-2 rounded-4' data-non-veg='$nonVegCount' data-veg='$vegCount' id='donutchart'
+              style='width:100%;  height: 400px'>
+            </div> ";
+
+            }
+            
+            
+            ?>
+            <div class='border-gray-200 border border-2 rounded-4' data-male='10' data-female='20' id='piechart'
+              style='width:100%;  height: 400px'>
             </div>
-            <div class="border-gray-200 border border-2 rounded-4" id="donutchart" style="width:100%;  height: 400px">
-            </div>
+
           </div>
           <div class="dashboard-student-list">
             <div class="dashboard-student-list-header mb-24">
@@ -244,6 +267,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                     <th class="text-gray-600 fw-medium" scope="col">ID</th>
                     <th class="text-gray-600 fw-medium" scope="col">Name</th>
                     <th class="text-gray-600 fw-medium" scope="col">Email</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Gender</th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Phone Number
                     </th>
@@ -269,6 +293,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                         while($result = mysqli_fetch_assoc($query)) {
 
                           $statusClass = '';
+                          // $genderClass = '';
 
                           if ($result['status'] == 'Active') {
                             $statusClass = 'status-active';
@@ -278,11 +303,18 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                             $statusClass = 'status-pending';
                         }
 
+                        // if($result['gender'] == 'Male'){
+                        //   $genderClass = 'fa-solid fa-mars text-male';
+                        // } else {
+                        //   $genderClass = 'fa-solid fa-venus text-female';
+                        // }
+
                           echo "<tr>
                           
                           <th scope='row'>".$result['id']."</th>
                           <td>".$result['name']."</td>
                           <td>".$result['email']."</td>
+                          <td class='ps-16'><i class='fa-solid fa-mars text-male'></i></td>
                           <td>".$result['phone_number']."</td>
                           <td>".$result['dob']."</td>
                           <td>".$result['guardian_phone_number']."</td>

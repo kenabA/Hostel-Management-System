@@ -271,7 +271,7 @@ if (isset($_GET['signup'])) {
               </div>
               <div class="login_content--footer">
                 <div class="login_content-btnBox mb-16">
-                  <button type="submit" class="btn-1 w-100">Sign in</button>
+                  <button type="submit" class="btn-1 w-100">Sign Up</button>
                 </div>
                 <p class="font-16 text-gray-600 text-center">
                   Already have an account?

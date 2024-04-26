@@ -312,7 +312,7 @@ if (isset($_GET['delete'])) {
                     </th>
                     <th class="text-gray-600 fw-medium" scope="col">DOB</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Phone
+                      Food Category
                     </th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Actions
@@ -328,13 +328,21 @@ if (isset($_GET['delete'])) {
 
                   while($result = mysqli_fetch_assoc($query)) {
 
+                    $categoryClass = '';
+
+                    if ($result['food_category'] == 'Non - Veg') {
+                      $categoryClass = 'categoryNonVeg';
+                  } elseif(($result['food_category'] == 'Vegetarian'))  {
+                      $categoryClass = 'categoryVeg';
+                  }
+
                     echo "<tr>
                     <th scope='row'>".$result['id']."</th>
                     <td>".$result['name']."</td>
                     <td>".$result['email']."</td>
                     <td>".$result['phone_number']."</td>
                     <td>".$result['dob']."</td>
-                    <td>".$result['guardian_phone_number']."</td>
+                    <td>".$result['food_category']."</td>
                     <td class='d-flex gap-12'>
                     <a href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>

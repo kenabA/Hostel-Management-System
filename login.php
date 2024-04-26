@@ -49,23 +49,3 @@ else {
 
 }
 }
-
-
-
-
-
-// "
-//         <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-//         <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-//           <div class='toast-header '>
-//           <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-//             <strong class='me-auto'>Login</strong>
-//             <small>Just Now</small>
-//             <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-//           </div>
-//           <div class='toast-body'>
-//               Logged in Successfully!
-//           </div>
-//         </div>
-//       </div>
-//         "
