@@ -63,7 +63,12 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
         <li class="offcanvas-navigation-list font-18">
           <a href="./client.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
-            Client</a>
+            Hostelers</a>
+        </li>
+        <li class="offcanvas-navigation-list font-18">
+          <a href="./guardian-detail.php" class="td-none text-gray-500 non-active-side-nav">
+            <i class="offcanvas-navigation-list-icon fa-solid fa-hands-holding-child"></i>
+            Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
           <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
@@ -82,7 +87,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
   <!-----=====-----===== SECTION : HEADER =====-----=====----->
   <header id="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary pb-24 pt-24">
-      <div class="container justify-content-between">
+      <div class="container justify-content-between align-items-center">
         <div class="d-flex justify-content-center gap-18 align-items-center">
           <button class="btn text-primary-tint" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -90,8 +95,15 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
           </button>
           <h3 class="text-gamma fw-semibold m-0 text-primary-tint">Admin</h3>
         </div>
+        <div id="navbarNavAltMarkup" class="d-flex gap-24 align-items-center">
+          <div class="header-time d-flex gap-12 align-items-center">
+            <i class="fa-regular text-primary-tint p-8 bg-primary-tint--1 text-primary rounded-5 fa-calendar"></i>
+            <?php 
+          $date = date("jS F, Y");
+          echo "<p class='fw-semibold m-0 text-primary-tint font-18'>$date</p>"
+        ?>
 
-        <div id="navbarNavAltMarkup">
+          </div>
           <div class="navbar-nav fw-medium">
 
             <?php
@@ -165,7 +177,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                     <i class="fa-solid fa-user bg-primary-tint--1 text-primary font-20 p-24 rounded-5"></i>
                   </div>
                   <div class="dashboard-body-block-texts d-flex flex-column">
-                    <p class="font-18 m-0 mb-8">Registered Clients</p>
+                    <p class="font-18 m-0 mb-8">Registered Hostelers</p>
                     <?php
 
                         error_reporting(E_ALL);
@@ -215,9 +227,16 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
               </div>
             </div>
           </div>
+          <div class="d-flex gap-48 justify-content-center align-items-center">
+            <div class="py-48 rounded-2" id="piechart" style="width:100%;  height: 400px">
+            </div>
+            <div class="py-48 rounded-2" id="donutchart" style="width:100%;  height: 400px">
+            </div>
+          </div>
+
           <div class="dashboard-student-list">
             <div class="dashboard-student-list-header mb-24">
-              <h3 class="text-gamma">Client List</h3>
+              <h3 class="text-gamma">Hosteler List</h3>
             </div>
             <div class="dashboard-student-list-body" style="overflow-x: auto">
               <table class="table table-striped text-nowrap">
@@ -290,6 +309,10 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
   </script>
   <script src="https://kit.fontawesome.com/4cbeaa27da.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <!-- CHARTS -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="../../js/pieChart.js"></script>
+  <script src="../../js/donutChart.js"></script>
 </body>
 
 </html>

@@ -195,22 +195,22 @@ if (isset($_GET['delete'])) {
             Dashboard</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./client.php" class="td-none text-gray-500 active-side-nav">
+          <a href="./client.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
             Hostelers</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./guardian-detail.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./guardian-detail.php" class="td-none text-gray-500 active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-hands-holding-child"></i>
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./settings.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-gear"></i>
             Settings</a>
         </li>
@@ -229,8 +229,6 @@ if (isset($_GET['delete'])) {
           </button>
           <h3 class="text-gamma fw-semibold m-0 text-primary-tint">Admin</h3>
         </div>
-
-
 
         <div id="navbarNavAltMarkup" class="d-flex gap-24 align-items-center">
           <div class="header-time d-flex gap-12 align-items-center">
@@ -286,17 +284,13 @@ if (isset($_GET['delete'])) {
     </nav>
   </header>
 
-
   <main>
     <section class="dashboard">
       <div class="container">
         <div class="dashboard-content">
           <div
             class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
-            <h2 class="text-beta-1">Hostelers</h2>
-            <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
-              <i class="fa-solid fa-plus me-8"></i> Add
-            </a>
+            <h2 class="text-beta-1">Guardian Details</h2>
           </div>
 
           <div class="dashboard-student-list">
@@ -306,16 +300,18 @@ if (isset($_GET['delete'])) {
                   <tr class="text-nowrap">
                     <th class="text-gray-600 fw-medium" scope="col">ID</th>
                     <th class="text-gray-600 fw-medium" scope="col">Name</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Email</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Phone Number
+                      Hosteler Phone
                     </th>
-                    <th class="text-gray-600 fw-medium" scope="col">DOB</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Guardian Name</th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Guardian Phone
                     </th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Actions
+                      Guardian Citizen Number
+                    </th>
+                    <th class="text-gray-600 fw-medium" scope="col">
+                      Guardian Type
                     </th>
                   </tr>
                 </thead>
@@ -331,18 +327,11 @@ if (isset($_GET['delete'])) {
                     echo "<tr>
                     <th scope='row'>".$result['id']."</th>
                     <td>".$result['name']."</td>
-                    <td>".$result['email']."</td>
                     <td>".$result['phone_number']."</td>
-                    <td>".$result['dob']."</td>
+                    <td>".$result['guardian_name']."</td>
                     <td>".$result['guardian_phone_number']."</td>
-                    <td class='d-flex gap-12'>
-                    <a href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
-                      <i class='fa-solid fa-pen'> </i>
-                    </a>
-                    <button onclick='deleteClient()' class='btn btn-delete bg-danger text-white'>
-                      <i class='fa-solid fa-trash'></i>
-                    </button>
-                  </td>
+                    <td>".$result['guardian_citizen']."</td>
+                    <td>".$result['guardian_type']."</td>
                   </tr>
 
                   <script>

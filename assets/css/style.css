@@ -19400,6 +19400,12 @@ label {
     max-width: 90%;
   }
 }
+.custom-toast {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+}
+
 .login {
   display: flex;
   align-items: center;
@@ -19460,13 +19466,6 @@ label {
 }
 .dashboard-body-block {
   height: 100%;
-}
-
-.custom-toast {
-  position: absolute;
-  color: white;
-  background-color: red !important;
-  border: 2px solid red !important;
 }
 
 /*# sourceMappingURL=style.css.map */
