@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
           <label for="form-select-fc" class="mb-8">Select Food Category</label>
           <select class="form-select" id="form-select-fc" name="foodCategory" aria-label="Default select example">
             <option selected value="Non - Veg">Non - Veg</option>
-            <option value="Veg">Vegetarian</option>
+            <option value="Veg">Veg</option>
           </select>
         </div>
         <div class="login_content--input">

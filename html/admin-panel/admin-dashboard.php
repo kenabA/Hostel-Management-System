@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 if (isset($_GET['login'])) {
   if ($_GET['login'] == 'true') {
 echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
@@ -108,13 +110,13 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
 
             <?php
 
-              session_start();
+              
               include '../../db_connection.php';
 
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
 
-              $id = mysqli_real_escape_string($conn, $_SESSION['id']);
+              $id =  $_SESSION['id'];
               $sql = "SELECT * FROM admin WHERE id='$id'";
               $query = mysqli_query($conn, $sql);
 
@@ -229,10 +231,9 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
           </div>
           <div class="d-flex gap-24 mb-48 justify-content-center align-items-center">
             <?php 
-            
             $sql = "SELECT
             SUM(CASE WHEN food_category = 'Non - Veg' THEN 1 ELSE 0 END) AS count_non_veg,
-            SUM(CASE WHEN food_category = 'Vegetarian' THEN 1 ELSE 0 END) AS count_veg
+            SUM(CASE WHEN food_category = 'Veg' THEN 1 ELSE 0 END) AS count_veg
         FROM users;
         ";
             $query = mysqli_query($conn, $sql);
@@ -248,17 +249,36 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
             </div> ";
 
             }
+
+            $sql2 = "SELECT
+            SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS male,
+            SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS female
+        FROM users;
+        ";
+            $query2 = mysqli_query($conn, $sql2);
             
-            
-            ?>
-            <div class='border-gray-200 border border-2 rounded-4' data-male='10' data-female='20' id='piechart'
+            if($query2) {
+              
+              $result = mysqli_fetch_assoc($query2);
+              $male = $result['male'];
+              $female = $result['female'];
+
+              echo "<div class='border-gray-200 border border-2 rounded-4' data-male='$male' data-female='$female' id='piechart'
               style='width:100%;  height: 400px'>
-            </div>
+            </div>";
+
+            }
+
+            ?>
+
 
           </div>
           <div class="dashboard-student-list">
-            <div class="dashboard-student-list-header mb-24">
-              <h3 class="text-gamma">Hosteler List</h3>
+            <div class="dashboard-student-list-header mb-24 d-flex align-items-center gap-16">
+              <h3 class="text-gamma mb-0">Hosteler List</h3>
+              <button onclick="reloadPage()" class="refresh-icon border-0 bg-white text-primary">
+                <i class="fa-solid fa-refresh me-12"></i>
+              </button>
             </div>
             <div class="dashboard-student-list-body" style="overflow-x: auto">
               <table class="table table-striped text-nowrap">
@@ -293,7 +313,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                         while($result = mysqli_fetch_assoc($query)) {
 
                           $statusClass = '';
-                          // $genderClass = '';
+                          
 
                           if ($result['status'] == 'Active') {
                             $statusClass = 'status-active';
@@ -303,18 +323,19 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                             $statusClass = 'status-pending';
                         }
 
-                        // if($result['gender'] == 'Male'){
-                        //   $genderClass = 'fa-solid fa-mars text-male';
-                        // } else {
-                        //   $genderClass = 'fa-solid fa-venus text-female';
-                        // }
+                        $genderClass = '';
 
-                          echo "<tr>
-                          
+                        if($result['gender'] == 'Male'){
+                          $genderClass = 'fa-solid fa-mars text-male';
+                        } elseif($result['gender'] == 'Female') {
+                          $genderClass = 'fa-solid fa-venus text-female';
+                        }
+                        
+                          echo "<tr>        
                           <th scope='row'>".$result['id']."</th>
                           <td>".$result['name']."</td>
                           <td>".$result['email']."</td>
-                          <td class='ps-16'><i class='fa-solid fa-mars text-male'></i></td>
+                          <td class='ps-24'><i class='".$genderClass."'></i></td>
                           <td>".$result['phone_number']."</td>
                           <td>".$result['dob']."</td>
                           <td>".$result['guardian_phone_number']."</td>
@@ -344,6 +365,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="../../js/pieChart.js"></script>
   <script src="../../js/donutChart.js"></script>
+  <script src="../../js/panelScript.js"></script>
 </body>
 
 </html>

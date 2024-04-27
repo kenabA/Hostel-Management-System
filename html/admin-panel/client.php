@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 if (isset($_GET['add'])) {
 
   if ($_GET['add'] == 'success') {
@@ -245,13 +247,13 @@ if (isset($_GET['delete'])) {
 
             <?php
 
-              session_start();
+              
               include '../../db_connection.php';
 
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
 
-              $id = mysqli_real_escape_string($conn, $_SESSION['id']);
+              $id =  $_SESSION['id'];
               $sql = "SELECT * FROM admin WHERE id='$id'";
               $query = mysqli_query($conn, $sql);
 

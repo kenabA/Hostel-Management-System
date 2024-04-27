@@ -97,7 +97,6 @@ if (isset($_GET['signup'])) {
 
   ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -194,7 +193,7 @@ if (isset($_GET['signup'])) {
             </div>
             <form id="signup-form" class="d-flex login_content--form gap-48 flex-column" action="./signup.php"
               method="POST">
-              <div class="d-flex gap-18 flex-column login_content--form-personal">
+              <div class="d-flex gap-24 flex-column login_content--form-personal">
                 <div class="login_content--input">
                   <label for="validationDefault01" class="form-label">Name</label>
                   <input type="text" class="form-control" id="validationDefault01" name="name" required />
@@ -208,6 +207,14 @@ if (isset($_GET['signup'])) {
                       We'll never share your email with anyone else.
                     </p>
                   </div>
+                </div>
+                <div class="login_content--input">
+
+                  <label for="form-select-gender" class="mb-8">Gender</label>
+                  <select class="form-select " id="form-select-fc" name="gender" aria-label="Default select example">
+                    <option selected value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
                 </div>
                 <div class="login_content--input">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -233,8 +240,8 @@ if (isset($_GET['signup'])) {
                 </div>
                 <div class="login_content--input">
                   <label for="dob" class="form-label">Date of Birth</label>
-                  <input type="date" required class="form-control" id="dob" name="dob"
-                    title="Please fill your date of birth." />
+                  <input type="date" required class="form-control" max="<?php echo date('Y-m-d'); ?>" id="dob"
+                    name="dob" title="Please fill your date of birth." />
                 </div>
 
               </div>
