@@ -86,6 +86,42 @@ if (isset($_GET['add'])) {
 
 if (isset($_GET['edit'])) {
 
+  if(($_GET['edit'] == 'unmatched')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Edit Client</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    ";
+  }
+
+  if(($_GET['edit'] == 'duplicate')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Edit Client</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    ";
+  }
+
   if ($_GET['edit'] == 'success') {
       echo "
       <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
@@ -309,9 +345,11 @@ if (isset($_GET['delete'])) {
                     <th class="text-gray-600 fw-medium" scope="col">ID</th>
                     <th class="text-gray-600 fw-medium" scope="col">Name</th>
                     <th class="text-gray-600 fw-medium" scope="col">Email</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Course</th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Phone Number
                     </th>
+                    <th class="text-gray-600 fw-medium" scope="col">Gender</th>
                     <th class="text-gray-600 fw-medium" scope="col">DOB</th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Food Category
@@ -338,11 +376,21 @@ if (isset($_GET['delete'])) {
                       $categoryClass = 'categoryVeg';
                   }
 
+                  $genderClass = '';
+
+                  if($result['gender'] == 'Male'){
+                    $genderClass = 'fa-solid fa-mars text-male';
+                  } elseif($result['gender'] == 'Female') {
+                    $genderClass = 'fa-solid fa-venus text-female';
+                  }
+
                     echo "<tr>
                     <th scope='row'>".$result['id']."</th>
                     <td>".$result['name']."</td>
                     <td>".$result['email']."</td>
+                    <td>".$result['course']."</td>
                     <td>".$result['phone_number']."</td>
+                    <td class='ps-24'><i class='".$genderClass."'></i></td>
                     <td>".$result['dob']."</td>
                     <td>".$result['food_category']."</td>
                     <td class='d-flex gap-12'>

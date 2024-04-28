@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
+    $course = $_POST['course'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
     $phoneNumber = $_POST['phoneNumber'];
@@ -38,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   } else{
 
-    $sql = "INSERT INTO users (name, email, gender,password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
-    VALUES ('$name', '$email', '$gender','$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
+    $sql = "INSERT INTO users (name, email, gender,course,password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
+    VALUES ('$name', '$email', '$gender','$course','$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
 
     if( mysqli_query($conn, $sql)){
         header("Location: ./index.php?signup=true");

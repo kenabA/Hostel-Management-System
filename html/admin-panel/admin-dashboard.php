@@ -22,7 +22,6 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -156,8 +155,6 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
 
             ?>
 
-
-
           </div>
         </div>
       </div>
@@ -271,9 +268,8 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
 
             ?>
 
-
           </div>
-          <div class="dashboard-student-list">
+          <div class="dashboard-student-list" id="hostelerList">
             <div class="dashboard-student-list-header mb-24 d-flex align-items-center gap-16">
               <h3 class="text-gamma mb-0">Hosteler List</h3>
               <button onclick="reloadPage()" class="refresh-icon border-0 bg-white text-primary">

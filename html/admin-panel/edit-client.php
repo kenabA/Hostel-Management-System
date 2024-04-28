@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $email = $result['email'];
   $password = $result['password'];
   $phoneNumber = $result['phone_number'];
+  $course = $result['course'];
   $dob = $result['dob'];
   $guardianName = $result['guardian_name'];
   $guardianPhoneNumber = $result['guardian_phone_number'];
@@ -40,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $confirmPassword = $_POST['confirm_password'];
   $phoneNumber = $_POST['phoneNumber'];
+  $course = $_POST['course'];
   $dob = $_POST['dob'];
   $guardianName = $_POST['guardianName'];
   $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
@@ -48,8 +51,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $foodCategory = $_POST['foodCategory'];
   $guardianType = $_POST['userType'];
 
+  $checkSQL = "SELECT * FROM users WHERE email='$email'";
+  
+  $checkQuery = mysqli_query($conn, $checkSQL);
+  
+  $resultEmail = mysqli_fetch_assoc($checkQuery);
+
+  if($password != $confirmPassword){
+      header("Location: ./client.php?edit=unmatched");
+      exit;
+  }
+
   $id = $_GET["id"];
-  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_citizen = '$guardianCitizen', guardian_type = '$guardianType', food_category = '$foodCategory' WHERE id = '$id';";
+  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', course = '$course',dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_citizen = '$guardianCitizen', guardian_type = '$guardianType', food_category = '$foodCategory' WHERE id = '$id';";
 
   echo $sql;
 
@@ -122,6 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
           <label for="phoneNumber" class="form-label">Phone Number</label>
           <input value="<?php echo $phoneNumber; ?>" pattern="9\d{9}" type="text" required class="form-control"
             id="phoneNumber" name="phoneNumber" title="Please enter a 10-digit number starting with 9" />
+        </div>
+        <div class="login_content--input">
+          <label for="course" class="form-label">Course</label>
+          <input type="text" value="<?php echo $course; ?>" required class="form-control" id="course" name="course" />
         </div>
         <div class="login_content--input">
           <label for="form-select-fc" class="mb-8">Select Food Category</label>

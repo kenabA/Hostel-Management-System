@@ -209,12 +209,15 @@ if (isset($_GET['signup'])) {
                   </div>
                 </div>
                 <div class="login_content--input">
-
                   <label for="form-select-gender" class="mb-8">Gender</label>
                   <select class="form-select " id="form-select-fc" name="gender" aria-label="Default select example">
                     <option selected value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
+                </div>
+                <div class="login_content--input">
+                  <label for="course" class="form-label">Course</label>
+                  <input type="text" required class="form-control" id="course" name="course" />
                 </div>
                 <div class="login_content--input">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -265,13 +268,13 @@ if (isset($_GET['signup'])) {
                       title="Please enter a 10-digit number starting with 9" />
                   </div>
                   <div class="login_content--input">
-                    <label for="form-select-1" class="mb-8">Select User</label>
+                    <label for="form-select-1" class="mb-8">Guardian Type </label>
                     <select class="form-select text-secondary" id="form-select-1" name="userType"
                       aria-label="Default select example">
-                      <option selected>Parent</option>
-                      <option value="1">Sibling</option>
-                      <option value="2">Relative</option>
-                      <option value="3">Other</option>
+                      <option selected value="Parent">Parent</option>
+                      <option value="Sibling">Sibling</option>
+                      <option value="Relative">Relative</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>

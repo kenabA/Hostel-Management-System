@@ -9,6 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
+    $gender = $_POST['gender'];
+    $course = $_POST['course'];
     $phoneNumber = $_POST['phoneNumber'];
     $dob = $_POST['dob'];
     $guardianName = $_POST['guardianName'];
@@ -34,14 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   } else{
 
-    $sql = "INSERT INTO users (name, email, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
-            VALUES ('$name', '$email', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
+    $sql = "INSERT INTO users (name, email, gender, course, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
+            VALUES ('$name', '$email', '$gender','$course', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
 
     $result = mysqli_query($conn, $sql);
 
     if($result){
 
-      header("Location: ./client.php?add=success");
+      header("Location: ./client.php?add=success"); 
 
     } else{
 
@@ -105,6 +107,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             id="phoneNumber" name="phoneNumber" title="Please enter a 10-digit number starting with 9" />
         </div>
         <div class="login_content--input">
+          <label for="form-select-gender" class="mb-8">Gender</label>
+          <select class="form-select " id="form-select-fc" name="gender" aria-label="Default select example">
+            <option selected value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="login_content--input">
+          <label for="course" class="form-label">Course</label>
+          <input type="text" required class="form-control" id="course" name="course" />
+        </div>
+        <div class="login_content--input">
           <label for="form-select-fc" class="mb-8">Select Food Category</label>
           <select class="form-select" id="form-select-fc" name="foodCategory" aria-label="Default select example">
             <option selected value="Non - Veg">Non - Veg</option>
@@ -140,10 +153,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="form-select-1" class="mb-8">Select Guardian Type</label>
             <select class="form-select text-secondary" id="form-select-1" name="userType"
               aria-label="Default select example">
-              <option selected>Parent</option>
-              <option value="1">Sibling</option>
-              <option value="2">Relative</option>
-              <option value="3">Other</option>
+              <option selected value="Parent">Parent</option>
+              <option value="Sibling">Sibling</option>
+              <option value="Relative">Relative</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
