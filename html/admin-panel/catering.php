@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 if (isset($_GET['add'])) {
 
   if ($_GET['add'] == 'success') {
@@ -84,6 +86,42 @@ if (isset($_GET['add'])) {
 
 if (isset($_GET['edit'])) {
 
+  if(($_GET['edit'] == 'unmatched')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Edit Client</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    ";
+  }
+
+  if(($_GET['edit'] == 'duplicate')){
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Edit Client</strong>
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+            Unmatched Passwords : The passwords do not match.
+        </div>
+      </div>
+    </div>
+    ";
+  }
+
   if ($_GET['edit'] == 'success') {
       echo "
       <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
@@ -131,18 +169,18 @@ if (isset($_GET['delete'])) {
   
   if ($_GET['delete'] == 'success') {
       echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Delete Client</strong>
+          <strong class='me-auto'>Delete Food</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Client deleted Successfully!
+          Food deleted Successfully!
         </div>
       </div>
     </div>
@@ -200,22 +238,22 @@ if (isset($_GET['delete'])) {
             Hostelers</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./catering.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./catering.php" class="td-none text-gray-500 active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-burger"></i>
             Catering</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./guardian-detail.php" class="td-none text-gray-500 active-side-nav">
+          <a href="./guardian-detail.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-hands-holding-child"></i>
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./settings.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-gear"></i>
             Settings</a>
         </li>
@@ -235,6 +273,8 @@ if (isset($_GET['delete'])) {
           <h3 class="text-gamma fw-semibold m-0 text-primary-tint">Admin</h3>
         </div>
 
+
+
         <div id="navbarNavAltMarkup" class="d-flex gap-24 align-items-center">
           <div class="header-time d-flex gap-12 align-items-center">
             <i class="fa-regular text-primary-tint p-8 bg-primary-tint--1 text-primary rounded-5 fa-calendar"></i>
@@ -248,13 +288,13 @@ if (isset($_GET['delete'])) {
 
             <?php
 
-              session_start();
+              
               include '../../db_connection.php';
 
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
 
-              $id = mysqli_real_escape_string($conn, $_SESSION['id']);
+              $id =  $_SESSION['id'];
               $sql = "SELECT * FROM admin WHERE id='$id'";
               $query = mysqli_query($conn, $sql);
 
@@ -289,13 +329,22 @@ if (isset($_GET['delete'])) {
     </nav>
   </header>
 
+
   <main>
     <section class="dashboard">
       <div class="container">
         <div class="dashboard-content">
           <div
             class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
-            <h2 class="text-beta-1">Guardian Details</h2>
+            <h2 class="text-beta-1">Catering Control Panel</h2>
+            <div class="d-flex gap-12">
+              <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
+                <i class="fa-solid fa-plus me-8"></i> Add Food
+              </a>
+              <a href="./add-client.php" class="btn btn-add d-flex bg-danger align-items-center">
+                <i class="fa-solid fa-bell me-8"></i>Food Ready
+              </a>
+            </div>
           </div>
 
           <div class="dashboard-student-list">
@@ -303,20 +352,13 @@ if (isset($_GET['delete'])) {
               <table class="table table-striped text-nowrap">
                 <thead>
                   <tr class="text-nowrap">
-                    <th class="text-gray-600 fw-medium" scope="col">ID</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Name</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Food ID</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Food Name</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Food Type</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Food Category</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Food Cuisine</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Hosteler Phone
-                    </th>
-                    <th class="text-gray-600 fw-medium" scope="col">Guardian Name</th>
-                    <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Phone
-                    </th>
-                    <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Citizen Number
-                    </th>
-                    <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Type
+                      Actions
                     </th>
                   </tr>
                 </thead>
@@ -324,26 +366,40 @@ if (isset($_GET['delete'])) {
 
                   <?php
 
-                  $sql = "SELECT * FROM users";
+                  $sql = "SELECT * FROM catering";
                   $query = mysqli_query($conn, $sql);
 
                   while($result = mysqli_fetch_assoc($query)) {
 
+                    $categoryClass = '';
+
+                    if ($result['food_category'] == 'Non - Veg') {
+                      $categoryClass = 'categoryNonVeg';
+                  } elseif(($result['food_category'] == 'Vegetarian'))  {
+                      $categoryClass = 'categoryVeg';
+                  }
+
                     echo "<tr>
-                    <th scope='row'>".$result['id']."</th>
-                    <td>".$result['name']."</td>
-                    <td>".$result['phone_number']."</td>
-                    <td>".$result['guardian_name']."</td>
-                    <td>".$result['guardian_phone_number']."</td>
-                    <td>".$result['guardian_citizen']."</td>
-                    <td>".$result['guardian_type']."</td>
+                    <th scope='row'>".$result['food_id']."</th>
+                    <td>".$result['food_name']."</td>
+                    <td>".$result['food_type']."</td>
+                    <td>".$result['food_category']."</td>
+                    <td>".$result['food_cuisine']."</td>
+                    <td class='d-flex gap-12'>
+                    <a href='./edit-food.php?id=$result[food_id]' class='btn btn-edit bg-warning text-black'>
+                      <i class='fa-solid fa-pen'> </i>
+                    </a>
+                    <button onclick='deleteFood()' class='btn btn-delete bg-danger text-white'>
+                      <i class='fa-solid fa-trash'></i>
+                    </button>
+                  </td>
                   </tr>
 
                   <script>
-                  function deleteClient(){
-                    var confirmation = confirm('Do you really want to delete this client');
+                  function deleteFood(){
+                    var confirmation = confirm('Do you really want to delete this food from the menu?');
                     if (confirmation) {
-                      window.location.href = 'delete-client.php?id=$result[id]';
+                      window.location.href = 'delete-food.php?id=$result[food_id]';
                     }
                   }
                   </script>

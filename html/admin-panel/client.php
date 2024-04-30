@@ -238,6 +238,11 @@ if (isset($_GET['delete'])) {
             Hostelers</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
+          <a href="./catering.php" class="td-none text-gray-500 non-active-side-nav">
+            <i class="offcanvas-navigation-list-icon fa-solid fa-burger"></i>
+            Catering</a>
+        </li>
+        <li class="offcanvas-navigation-list font-18">
           <a href="./guardian-detail.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-hands-holding-child"></i>
             Guardian Details</a>

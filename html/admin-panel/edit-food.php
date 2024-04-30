@@ -6,13 +6,13 @@ include '../../db_connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
   if ( !isset($_GET["id"])) {
-    header("location: ./client.php");
+    header("location: ./catering.php");
     exit;
   }
   
-  $id = $_GET["id"];
+  $food_id = $_GET["id"];
   
-  $sql = "SELECT * FROM users WHERE id='$id'";
+  $sql = "SELECT * FROM catering WHERE food_id='$food_id'";
   
   $query = mysqli_query($conn, $sql);
   
