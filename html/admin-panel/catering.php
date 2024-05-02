@@ -129,6 +129,51 @@ if (isset($_GET['delete'])) {
   } 
 }
 
+if (isset($_GET['add'])) {
+
+  if ($_GET['add'] == 'success') {
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+    <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+      <div class='toast-header '>
+        
+      <i class='fa-solid fa-success me-12 text-white p-8 rounded-5 bg-success'></i>
+        <strong class='me-auto'>Add Food</strong>
+      
+        <small>Just Now</small>
+        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+      </div>
+      <div class='toast-body'>
+        New food added successfully.
+      </div>
+    </div>
+  </div>
+    ";
+} 
+
+  if ($_GET['add'] == 'duplicate') {
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+    <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+      <div class='toast-header '>
+        
+      <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+        <strong class='me-auto'>Add Food</strong>
+      
+        <small>Just Now</small>
+        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+      </div>
+      <div class='toast-body'>
+        Food name already exists.
+      </div>
+    </div>
+  </div>
+    ";
+
+}
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -326,7 +371,7 @@ if (isset($_GET['delete'])) {
             class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
             <h2 class="text-beta-1">Catering Control Panel</h2>
             <div class="d-flex gap-12">
-              <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
+              <a href="./add-food.php" class="btn btn-add d-flex align-items-center">
                 <i class="fa-solid fa-plus me-8"></i> Add Food
               </a>
               <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="./add-client.php"
