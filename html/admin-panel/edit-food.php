@@ -19,63 +19,32 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $result = mysqli_fetch_assoc($query);
   
   if(!$result) {
-    header("location: ./client.php");
+    header("location: ./catering.php");
     exit;
   }
 
-  $name = $result['name'];
-  $email = $result['email'];
-  $password = $result['password'];
-  $phoneNumber = $result['phone_number'];
-  $course = $result['course'];
-  $dob = $result['dob'];
-  $guardianName = $result['guardian_name'];
-  $guardianPhoneNumber = $result['guardian_phone_number'];
-  $guardianCitizen = $result['guardian_citizen'];
-  $guardianType = $result['guardian_type'];
-  $foodCategory = $result['food_category'];
+  $food_name = $result['food_name'];
+  $food_type = $result['food_type'];
+  $food_category = $result['food_category'];
+  $food_cuisine = $result['food_cuisine'];
+  
   
 } else {
-  
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirmPassword = $_POST['confirm_password'];
-  $phoneNumber = $_POST['phoneNumber'];
-  $course = $_POST['course'];
-  $dob = $_POST['dob'];
-  $guardianName = $_POST['guardianName'];
-  $guardianPhoneNumber = $_POST['guardianPhoneNumber'];
-  $guardianCitizen = $_POST['guardianPassport'];
-  $foodCategory = $_POST['foodCategory'];
-  $guardianType = $_POST['userType'];
 
-  $checkSQL = "SELECT * FROM users WHERE email='$email'";
-  
-  $checkQuery = mysqli_query($conn, $checkSQL);
-  
-  $resultEmail = mysqli_fetch_assoc($checkQuery);
-
-  if($password != $confirmPassword){
-      header("Location: ./client.php?edit=unmatched");
-      exit;
-  }
+  $food_name = $_POST['food_name'];
+  $food_type = $_POST['food_type'];
+  $food_category = $_POST['food_category'];
+  $food_cuisine = $_POST['food_cuisine'];
 
   $id = $_GET["id"];
-  $sql = "UPDATE users SET name = '$name', email = '$email', password = '$password', phone_Number = '$phoneNumber', course = '$course',dob = '$dob', guardian_name = '$guardianName', guardian_phone_number = '$guardianPhoneNumber', guardian_citizen = '$guardianCitizen', guardian_type = '$guardianType', food_category = '$foodCategory' WHERE id = '$id';";
-
-  echo $sql;
+  $sql = "UPDATE catering SET food_name = '$food_name', food_type = '$food_type', food_cuisine = '$food_cuisine' WHERE id = '$id';";
 
   $result = mysqli_query($conn, $sql);
 
   if($result){
-
-    header("Location: ./client.php?edit=success");
-
+    echo "success";
   } else{
-
-    header("Location: ./client.php?edit=error");
-
+    echo "error";
   };
   
 }
@@ -97,96 +66,44 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   <div class="login_content--box pt-48 pb-80 px-80 pb-48 bg-white">
     <header class="login_content--header mb-48">
       <div class="login_content--header-main">
-        <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Details</h2>
+        <h2 class="text-beta text-primary fw-semibold mb-14 text-center">Edit Food</h2>
         <p class="font-16 text-gray-600 text-center">
-          Make changes to the client's details!
+          Make changes to the food!
         </p>
       </div>
     </header>
     <form class="d-flex login_content--form gap-48 flex-column" method="POST">
       <input type="hidden" value="<?php echo $id;?>">
-      <div class="d-flex gap-18 flex-column login_content--form-personal">
-        <div class="login_content--input">
-          <label for="validationDefault01" class="form-label">Name</label>
-          <input value="<?php echo $name; ?>" type="text" class="form-control" id="validationDefault01" name="name"
-            required />
-        </div>
-        <div class="login_content--input">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input value="<?php echo $email; ?>" type="email" required class="form-control" id="exampleInputEmail1"
-            name="email" aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">
-            <p class="text-gray-500 m-0">
-              We'll never share your email with anyone else.
-            </p>
-          </div>
-        </div>
-        <div class="login_content--input">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input value="<?php echo $password; ?>" type="password" required class="form-control"
-            id="exampleInputPassword1" name="password" />
-        </div>
-        <div class="login_content--input">
-          <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-          <input value="<?php echo $password; ?>" type="password" required class="form-control"
-            id="exampleInputPassword2" name="confirm_password" />
-        </div>
-        <div class="login_content--input">
-          <label for="phoneNumber" class="form-label">Phone Number</label>
-          <input value="<?php echo $phoneNumber; ?>" pattern="9\d{9}" type="text" required class="form-control"
-            id="phoneNumber" name="phoneNumber" title="Please enter a 10-digit number starting with 9" />
-        </div>
-        <div class="login_content--input">
-          <label for="course" class="form-label">Course</label>
-          <input type="text" value="<?php echo $course; ?>" required class="form-control" id="course" name="course" />
-        </div>
-        <div class="login_content--input">
-          <label for="form-select-fc" class="mb-8">Select Food Category</label>
-          <select class="form-select" id="form-select-fc" name="foodCategory" aria-label="Default select example">
-            <option selected value="Non - Veg">Non - Veg</option>
-            <option value="Veg">Veg</option>
-          </select>
-        </div>
-        <div class="login_content--input">
-          <label for="dob" class="form-label">Date of Birth</label>
-          <input value="<?php echo $dob; ?>" type="date" required class="form-control" id="dob" name="dob"
-            title="Please fill your date of birth." />
-        </div>
+
+      <div class="login_content--input">
+        <label for="validationDefault01" class="form-label">Food Name</label>
+        <input value="<?php echo $food_name; ?>" type="text" class="form-control" id="validationDefault01"
+          name="food_name" required />
       </div>
-      <div class="login_content--form-guardian mb-24">
-        <h3 class="text-gamma mb-32 text-black">Guardian Information</h3>
-        <div class="d-flex gap-18 flex-column login_content--form-guardian">
-          <div class="login_content--input">
-            <label for="validationDefault03" class="form-label">Guardian Name</label>
-            <input value="<?php echo $guardianName; ?>" type="text" class="form-control" id="validationDefault03"
-              name="guardianName" required />
-          </div>
-          <div class="login_content--input">
-            <label for="phoneNumber1" class="form-label">Guardian Phone Number</label>
-            <input value="<?php echo $guardianPhoneNumber; ?>" pattern="9\d{9}" type="text" required
-              class="form-control" id="phoneNumber1" name="guardianPhoneNumber"
-              title="Please enter a 10-digit number starting with 9" />
-          </div>
-          <div class="login_content--input">
-            <label for="passport" class="form-label">Guardian Citizen Number</label>
-            <input value="<?php echo $guardianCitizen; ?>" type="number" required class="form-control" id="passport"
-              name="guardianPassport" title="Please enter a 10-digit number starting with 9" />
-          </div>
-          <div class="login_content--input">
-            <label for="form-select-1" class="mb-8">Select User</label>
-            <select class="form-select text-secondary" id="form-select-1" name="userType"
-              aria-label="Default select example">
-              <option selected>Parent</option>
-              <option value="1">Sibling</option>
-              <option value="2">Relative</option>
-              <option value="3">Other</option>
-            </select>
-          </div>
-        </div>
+
+      <div class="login_content--input">
+        <label for="validationDefault02" class="form-label">Food Type</label>
+        <input value="<?php echo $food_type; ?>" type="text" class="form-control" id="validationDefault02"
+          name="food_type" required />
+      </div>
+
+      <div class="login_content--input mb-24">
+        <label for="form-select" class="mb-8">Select Food Category</label>
+        <select class="form-select" id="fomr-select" name="food_type" aria-label="Default select example">
+          <option value="Non-vegetarian / Vegetarian" selected>Non-vegetarian / Vegetarian</option>
+          <option value="Non-vegetarian">Non-vegetarian</option>
+          <option value="Vegetarian">Vegetarian</option>
+        </select>
+      </div>
+
+      <div class="login_content--input">
+        <label for="validationDefault03" class="form-label">Food Cuisine</label>
+        <input value="<?php echo $food_cuisine;?>" type="text" class="form-control" id="validationDefault03"
+          name="food_type" required />
       </div>
       <div class="login_content--footer">
         <div class="login_content-btnBox d-flex gap-24">
-          <a role="button" type="submit" href="./client.php"
+          <a role="button" type="submit" href="./catering.php"
             class="btn-3 w-100 text-decoration-none text-center">Back</a>
           <button type="submit" class="btn-1 w-100">Save Changes</button>
         </div>

@@ -2,102 +2,63 @@
 
 session_start();
 
-if (isset($_GET['add'])) {
+if (isset($_GET['post'])) {
 
-  if ($_GET['add'] == 'success') {
+  if ($_GET['post'] == 'true') {
       echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Add Client</strong>
+          <strong class='me-auto'>Notify Hostelers</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Sucessfully added new client!
+          Successfully sent the notifications to the Hostelers.
         </div>
       </div>
     </div>
       ";
-
   } 
-  
-  if ($_GET['add'] == 'error') {
-      echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+
+  if ($_GET['post'] == 'false') {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Add Client</strong>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-error'></i>
+          <strong class='me-auto'>Notify Hostelers</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Failed to add new client!
+          Couldn't send the notification to the Hostelers.
         </div>
       </div>
     </div>
       ";
-  }
-
-  if( ($_GET['add'] == 'duplicate')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Email already exists. Please try with another!
-        </div>
-      </div>
-    </div>
-    ";
   } 
-  
-  if(($_GET['add'] == 'unmatched')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
-        </div>
-      </div>
-    </div>
-    
-    ";
-  }
-  
 }
 
 if (isset($_GET['edit'])) {
 
-  if(($_GET['edit'] == 'unmatched')){
+  if(($_GET['edit'] == 'success')){
     echo "
     <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
       <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Edit Food</strong>
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
+            Food edited successfully.
         </div>
       </div>
     </div>
@@ -110,53 +71,32 @@ if (isset($_GET['edit'])) {
       <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
         <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+          <strong class='me-auto'>Edit Food</strong>
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
+            Food with that name already exists.
         </div>
       </div>
     </div>
     ";
   }
 
-  if ($_GET['edit'] == 'success') {
-      echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Edit Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Change saved successfully!
-        </div>
-      </div>
-    </div>
-      ";
-
-  }   
-
   if ($_GET['edit'] == 'error') {
       echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+          <strong class='me-auto'>Edit Food</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Unable to make changes!
+          Unable to make changes to the food!
         </div>
       </div>
     </div>
@@ -180,7 +120,7 @@ if (isset($_GET['delete'])) {
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Food deleted Successfully!
+          Food deleted successfully
         </div>
       </div>
     </div>
@@ -218,6 +158,54 @@ if (isset($_GET['delete'])) {
 
 <body>
 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0">
+        <div class="modal-header border-0 d-flex justify-content-end">
+          <button type="button" class="btn p-0 text-primary font-24" data-bs-dismiss="modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="login_content--box pt-48 pb-80 px-48 pb-48 bg-white">
+            <div class="login_content--header mb-48">
+              <h2 class="text-beta text-primary fw-semibold text-center mb-14">
+                Food Ready
+              </h2>
+              <p class="font-16 text-gray-600 text-center">
+                Send Food Ready Notification to the Hostelers.
+              </p>
+            </div>
+            <!-- Login form -->
+            <form id="login-form" class="d-flex login_content--form flex-column gap-18" action="foodready.php"
+              method="POST">
+              <div class="login_content--input mb-24">
+                <label for="form-select" class="mb-8">Select Food Type</label>
+                <select class="form-select" id="fomr-select" name="food_type" aria-label="Default select example">
+                  <option value="Breakfast" selected>Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Meal">Meal</option>
+                  <option value="Dinner">Dinner</option>
+                  <option value="Snacks">Snacks</option>
+                </select>
+              </div>
+              <div class="login_content--input mb-24">
+                <label for="textarea" class="form-label">Message</label>
+                <textarea name="food_msg" required class="form-control" id="textarea" rows="3"></textarea>
+              </div>
+
+              <div class="login_content--footer">
+                <div class="login_content-btnBox mb-16">
+                  <button type="submit" class="btn-1 w-100">Send Notification</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-----=====-----===== SIDENAV =====-----=====----->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -341,7 +329,8 @@ if (isset($_GET['delete'])) {
               <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
                 <i class="fa-solid fa-plus me-8"></i> Add Food
               </a>
-              <a href="./add-client.php" class="btn btn-add d-flex bg-danger align-items-center">
+              <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="./add-client.php"
+                class="btn btn-add d-flex bg-danger align-items-center">
                 <i class="fa-solid fa-bell me-8"></i>Food Ready
               </a>
             </div>
