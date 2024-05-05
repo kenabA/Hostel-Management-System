@@ -1,155 +1,7 @@
 <?php 
 
-if (isset($_GET['add'])) {
+session_start();
 
-  if ($_GET['add'] == 'success') {
-      echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Add Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Sucessfully added new client!
-        </div>
-      </div>
-    </div>
-      ";
-
-  } 
-  
-  if ($_GET['add'] == 'error') {
-      echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Add Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Failed to add new client!
-        </div>
-      </div>
-    </div>
-      ";
-  }
-
-  if( ($_GET['add'] == 'duplicate')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Email already exists. Please try with another!
-        </div>
-      </div>
-    </div>
-    ";
-  } 
-  
-  if(($_GET['add'] == 'unmatched')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
-        </div>
-      </div>
-    </div>
-    
-    ";
-  }
-  
-}
-
-if (isset($_GET['edit'])) {
-
-  if ($_GET['edit'] == 'success') {
-      echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Edit Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Change saved successfully!
-        </div>
-      </div>
-    </div>
-      ";
-
-  }   
-
-  if ($_GET['edit'] == 'error') {
-      echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Unable to make changes!
-        </div>
-      </div>
-    </div>
-      ";
-  }
-
-}
-
-if (isset($_GET['delete'])) {
-  
-  if ($_GET['delete'] == 'success') {
-      echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Delete Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Client deleted Successfully!
-        </div>
-      </div>
-    </div>
-      ";
-
-  } 
-}
 
 ?>
 
@@ -205,17 +57,17 @@ if (isset($_GET['delete'])) {
             Catering</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./guardian-detail.php" class="td-none text-gray-500 active-side-nav">
+          <a href="./guardian-detail.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-hands-holding-child"></i>
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./approval.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./approval.html" class="td-none text-gray-500 active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-list-check"></i>
             Approval</a>
         </li>
@@ -235,6 +87,8 @@ if (isset($_GET['delete'])) {
           <h3 class="text-gamma fw-semibold m-0 text-primary-tint">Admin</h3>
         </div>
 
+
+
         <div id="navbarNavAltMarkup" class="d-flex gap-24 align-items-center">
           <div class="header-time d-flex gap-12 align-items-center">
             <i class="fa-regular text-primary-tint p-8 bg-primary-tint--1 text-primary rounded-5 fa-calendar"></i>
@@ -248,13 +102,13 @@ if (isset($_GET['delete'])) {
 
             <?php
 
-              session_start();
+              
               include '../../db_connection.php';
 
               error_reporting(E_ALL);
               ini_set('display_errors', 1);
 
-              $id = mysqli_real_escape_string($conn, $_SESSION['id']);
+              $id =  $_SESSION['id'];
               $sql = "SELECT * FROM admin WHERE id='$id'";
               $query = mysqli_query($conn, $sql);
 
@@ -289,13 +143,14 @@ if (isset($_GET['delete'])) {
     </nav>
   </header>
 
+
   <main>
     <section class="dashboard">
       <div class="container">
         <div class="dashboard-content">
           <div
             class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
-            <h2 class="text-beta-1">Guardian Details</h2>
+            <h2 class="text-beta-1">Approval</h2>
           </div>
 
           <div class="dashboard-student-list">
@@ -305,18 +160,18 @@ if (isset($_GET['delete'])) {
                   <tr class="text-nowrap">
                     <th class="text-gray-600 fw-medium" scope="col">ID</th>
                     <th class="text-gray-600 fw-medium" scope="col">Name</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Email</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Course</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Hosteler Phone
+                      Phone Number
                     </th>
-                    <th class="text-gray-600 fw-medium" scope="col">Guardian Name</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Gender</th>
+                    <th class="text-gray-600 fw-medium" scope="col">DOB</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Phone
+                      Food Category
                     </th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Citizen Number
-                    </th>
-                    <th class="text-gray-600 fw-medium" scope="col">
-                      Guardian Type
+                      Actions
                     </th>
                   </tr>
                 </thead>
@@ -324,19 +179,47 @@ if (isset($_GET['delete'])) {
 
                   <?php
 
-                  $sql = "SELECT * FROM users";
+                  $sql = "SELECT * FROM users where approved='No'";
                   $query = mysqli_query($conn, $sql);
 
                   while($result = mysqli_fetch_assoc($query)) {
 
+                    $categoryClass = '';
+
+                    if ($result['food_category'] == 'Non - Veg') {
+                      $categoryClass = 'categoryNonVeg';
+                  } elseif(($result['food_category'] == 'Vegetarian'))  {
+                      $categoryClass = 'categoryVeg';
+                  }
+
+                  $genderClass = '';
+
+                  if($result['gender'] == 'Male'){
+                    $genderClass = 'fa-solid fa-mars text-male';
+                  } elseif($result['gender'] == 'Female') {
+                    $genderClass = 'fa-solid fa-venus text-female';
+                  }
+
                     echo "<tr>
                     <th scope='row'>".$result['id']."</th>
                     <td>".$result['name']."</td>
+                    <td>".$result['email']."</td>
+                    <td>".$result['course']."</td>
                     <td>".$result['phone_number']."</td>
-                    <td>".$result['guardian_name']."</td>
-                    <td>".$result['guardian_phone_number']."</td>
-                    <td>".$result['guardian_citizen']."</td>
-                    <td>".$result['guardian_type']."</td>
+                    <td class='ps-24'><i class='".$genderClass."'></i></td>
+                    <td>".$result['dob']."</td>
+                    <td>".$result['food_category']."</td>
+                    <td class='d-flex gap-12'>
+                    <button class='btn btn-edit bg-warning '>
+                      <i class='fa-solid fa-eye'></i>
+                    </button>
+                    <a href='./approve-hosteler?id=$result[id]&btn' class='btn bg-success text-white'>
+                      <i class='fa-solid fa-check'> </i>
+                      </a>
+                      <button onclick='deleteClient()' class='btn btn-delete bg-danger text-white'>
+                        <i class='fa-solid fa-xmark'></i>
+                      </button>
+                  </td>
                   </tr>
 
                   <script>

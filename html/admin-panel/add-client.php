@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   } else{
 
-    $sql = "INSERT INTO users (name, email, gender, course, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status)
-            VALUES ('$name', '$email', '$gender','$course', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status')";
+    $sql = "INSERT INTO users (name, email, gender, course, password, phone_number, dob, guardian_name, guardian_phone_number, guardian_citizen, guardian_type, food_category, status, approved)
+            VALUES ('$name', '$email', '$gender','$course', '$password', '$phoneNumber', '$dob', '$guardianName', '$guardianPhoneNumber', '$guardianPassport', '$guardianType', '$foodCategory' ,'$status', 'No')";
 
     $result = mysqli_query($conn, $sql);
 
