@@ -253,7 +253,7 @@ if (isset($_GET['delete'])) {
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./approval.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./approval.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-list-check"></i>
             Approval</a>
         </li>
@@ -368,7 +368,7 @@ if (isset($_GET['delete'])) {
 
                   <?php
 
-                  $sql = "SELECT * FROM users";
+                  $sql = "SELECT * FROM users where approved= 'Yes'";
                   $query = mysqli_query($conn, $sql);
 
                   while($result = mysqli_fetch_assoc($query)) {

@@ -176,10 +176,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <label for="form-select-1" class="mb-8">Select User</label>
             <select class="form-select text-secondary" id="form-select-1" name="userType"
               aria-label="Default select example">
-              <option selected>Parent</option>
-              <option value="1">Sibling</option>
-              <option value="2">Relative</option>
-              <option value="3">Other</option>
+              <option value="Parent" selected>Parent</option>
+              <option value="Sibling">Sibling</option>
+              <option value="Relative">Relative</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>

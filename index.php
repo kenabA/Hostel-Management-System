@@ -22,6 +22,45 @@ if (isset($_GET['login'])) {
       ";
 
   } 
+
+  if ($_GET['login'] == 'approval-pending') {
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+    <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+      <div class='toast-header '>
+      <i class='fa-solid fa-hourglass-start me-12 text-white p-8 rounded-5 bg-warning'></i>
+        <strong class='me-auto'>Failed to Login</strong>
+        <small>Just Now</small>
+        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+      </div>
+      <div class='toast-body'>
+          Apologies, but your registration is yet to be approved by the administrator. Please check again after some time.
+      </div>
+    </div>
+  </div>
+    ";
+
+} 
+
+if ($_GET['login'] == 'approval-rejected') {
+  echo "
+  <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
+  <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
+    <div class='toast-header '>
+    <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+      <strong class='me-auto'>Failed to Login</strong>
+      <small>Just Now</small>
+      <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+    </div>
+    <div class='toast-body'>
+        Apologies, but your registration request was rejected. Please go through your form and resubmit with proper data.
+    </div>
+  </div>
+</div>
+  ";
+
+} 
+
 }
 
 if (isset($_GET['signup'])) {

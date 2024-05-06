@@ -286,7 +286,7 @@ if (isset($_GET['add'])) {
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./approval.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./approval.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-list-check"></i>
             Approval</a>
         </li>

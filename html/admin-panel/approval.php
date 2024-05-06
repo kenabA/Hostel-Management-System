@@ -2,6 +2,48 @@
 
 session_start();
 
+if (isset($_GET['approved'])) {
+
+  if ($_GET['approved'] == 'accepted') {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Approve Hostelers</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+          The hosteler has been accepted and enrolled into the Hostel
+        </div>
+      </div>
+    </div>
+      ";
+  } 
+
+  if ($_GET['approved'] == 'rejected') {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+        <div class='toast-header '>
+          
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+          <strong class='me-auto'>Approve Hostelers</strong>
+        
+          <small>Just Now</small>
+          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body'>
+        The hosteler has been rejected and wasn't enrolled into the Hostel.
+        </div>
+      </div>
+    </div>
+      ";
+  } 
+}
 
 ?>
 
@@ -15,6 +57,12 @@ session_start();
   <link rel="stylesheet" href="../../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
+  .modal-full-data {
+    width: 800px !important;
+    border: 2px solid red;
+
+  }
+
   .dropdown-item:active {
     background-color: unset !important;
     color: unset !important;
@@ -31,7 +79,6 @@ session_start();
 </head>
 
 <body>
-
 
   <!-----=====-----===== SIDENAV =====-----=====----->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -67,7 +114,7 @@ session_start();
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./approval.html" class="td-none text-gray-500 active-side-nav">
+          <a href="./approval.php" class="td-none text-gray-500 active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-list-check"></i>
             Approval</a>
         </li>
@@ -87,8 +134,6 @@ session_start();
           <h3 class="text-gamma fw-semibold m-0 text-primary-tint">Admin</h3>
         </div>
 
-
-
         <div id="navbarNavAltMarkup" class="d-flex gap-24 align-items-center">
           <div class="header-time d-flex gap-12 align-items-center">
             <i class="fa-regular text-primary-tint p-8 bg-primary-tint--1 text-primary rounded-5 fa-calendar"></i>
@@ -102,7 +147,6 @@ session_start();
 
             <?php
 
-              
               include '../../db_connection.php';
 
               error_reporting(E_ALL);
@@ -158,19 +202,31 @@ session_start();
               <table class="table table-striped text-nowrap">
                 <thead>
                   <tr class="text-nowrap">
-                    <th class="text-gray-600 fw-medium" scope="col">ID</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Name</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Email</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Course</th>
-                    <th class="text-gray-600 fw-medium" scope="col">
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">ID</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">Name</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">Email</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">Course</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
                       Phone Number
                     </th>
-                    <th class="text-gray-600 fw-medium" scope="col">Gender</th>
-                    <th class="text-gray-600 fw-medium" scope="col">DOB</th>
-                    <th class="text-gray-600 fw-medium" scope="col">
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">Gender</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">DOB</th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
                       Food Category
                     </th>
-                    <th class="text-gray-600 fw-medium" scope="col">
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
+                      Guardian Name
+                    </th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
+                      Guardian Citizen No.
+                    </th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
+                      Guardian Phone Number
+                    </th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
+                      Guardian Type
+                    </th>
+                    <th class="px-24 text-gray-600 fw-medium" scope="col">
                       Actions
                     </th>
                   </tr>
@@ -201,36 +257,31 @@ session_start();
                   }
 
                     echo "<tr>
-                    <th scope='row'>".$result['id']."</th>
-                    <td>".$result['name']."</td>
-                    <td>".$result['email']."</td>
-                    <td>".$result['course']."</td>
-                    <td>".$result['phone_number']."</td>
+                    <td scope='row'>".$result['id']."</td>
+                    <td class='px-24'>".$result['name']."</td>
+                    <td class='px-24'>".$result['email']."</td>
+                    <td class='px-24'>".$result['course']."</td>
+                    <td class='px-24'>".$result['phone_number']."</td>
                     <td class='ps-24'><i class='".$genderClass."'></i></td>
-                    <td>".$result['dob']."</td>
-                    <td>".$result['food_category']."</td>
+                    <td class='px-24'>".$result['dob']."</td>
+                    <td class='px-24'>".$result['food_category']."</td>
+                    <td class='px-24'>".$result['guardian_name']."</td>
+                    <td class='px-24'>".$result['guardian_citizen']."</td>
+                    <td class='px-24'>".$result['guardian_phone_number']."</td>
+                    <td class='px-24'>".$result['guardian_type']."</td>
                     <td class='d-flex gap-12'>
-                    <button class='btn btn-edit bg-warning '>
-                      <i class='fa-solid fa-eye'></i>
-                    </button>
-                    <a href='./approve-hosteler?id=$result[id]&btn' class='btn bg-success text-white'>
+                    
+                    <a href='./approve-hosteler.php?id=$result[id]&btn=selected' class='btn bg-success text-white'>
                       <i class='fa-solid fa-check'> </i>
-                      </a>
-                      <button onclick='deleteClient()' class='btn btn-delete bg-danger text-white'>
-                        <i class='fa-solid fa-xmark'></i>
-                      </button>
+                    </a>
+
+                    <a href='./approve-hosteler.php?id=$result[id]&btn=rejected' class='btn btn-delete bg-danger text-white'>
+                      <i class='fa-solid fa-xmark'> </i>
+                    </a>
+                    
                   </td>
                   </tr>
 
-                  <script>
-                  function deleteClient(){
-                    var confirmation = confirm('Do you really want to delete this client');
-                    if (confirmation) {
-                      window.location.href = 'delete-client.php?id=$result[id]';
-                    }
-                  }
-                  </script>
-                
                   ";
                   }
 ?>
@@ -242,6 +293,7 @@ session_start();
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- SCRIPTS -->

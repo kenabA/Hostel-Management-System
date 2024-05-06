@@ -82,7 +82,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
             Rooms</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./approval.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./approval.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-list-check"></i>
             Approval</a>
         </li>
@@ -187,7 +187,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                         error_reporting(E_ALL);
                         ini_set('display_errors', 1);
 
-                        $sql = "SELECT COUNT(*) AS total_users FROM users;";
+                        $sql = "SELECT COUNT(*) AS total_users FROM users where approved='Yes';";
                         $query = mysqli_query($conn, $sql);
                         
                         
@@ -236,7 +236,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
             $sql = "SELECT
             SUM(CASE WHEN food_category = 'Non - Veg' THEN 1 ELSE 0 END) AS count_non_veg,
             SUM(CASE WHEN food_category = 'Veg' THEN 1 ELSE 0 END) AS count_veg
-        FROM users;
+        FROM users where approved='Yes';
         ";
             $query = mysqli_query($conn, $sql);
             
@@ -255,7 +255,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
             $sql2 = "SELECT
             SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS male,
             SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS female
-        FROM users;
+            FROM users where approved='Yes';
         ";
             $query2 = mysqli_query($conn, $sql2);
             
@@ -304,7 +304,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
                 <tbody>
                   <?php
 
-                        $sql = "SELECT * FROM users";
+                        $sql = "SELECT * FROM users where approved='Yes'";
                         $query = mysqli_query($conn, $sql);
 
                         if (!$result) {

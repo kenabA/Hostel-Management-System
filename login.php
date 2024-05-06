@@ -21,6 +21,17 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['user_ty
         $_SESSION['id'] = $user_data['id'];
         $_SESSION['email'] = $user_data['email'];
         $_SESSION['name'] = $user_data['name'];
+        $approved = $user_data['approved'];
+
+        if($approved == "No") {
+            header("Location: ./index.php?login=approval-pending");
+            exit();
+        }
+
+        if($approved == "Rejected") {
+            header("Location: ./index.php?login=approval-rejected");
+            exit();
+        }
 
         header("Location: ./html/student-panel/student-dashboard.php?login=true");
         exit();
