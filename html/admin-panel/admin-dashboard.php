@@ -366,7 +366,7 @@ echo" <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="../../js/pieChart.js"></script>
   <script src="../../js/donutChart.js"></script>
-  <script src="../../js/panelScript.js"></script>
+  <script src="../../js/adminPanelScript.js"></script>
 </body>
 
 </html>
