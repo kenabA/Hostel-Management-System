@@ -53,67 +53,29 @@
         <div class="row align-items-center gy-48 gx-32">
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
             <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
+             
                 " src="./hostel_img/hostel-1.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-2.jpg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-2.jpg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-3.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-3.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-4.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-4.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-5.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-5.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-6.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-6.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-7.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-7.jpeg" alt="Responsive image" />
           </div>
           <div class="col-4 col-lg-4 col-md-6 col-sm-12 gallery_imgWr">
-            <img style="
-                  height: 300px;
-                  width: 100%;
-                  object-fit: cover;
-                  object-position: center;
-                " src="./hostel_img/hostel-8.jpeg" alt="Responsive image" />
+            <img src="./hostel_img/hostel-8.jpeg" alt="Responsive image" />
           </div>
         </div>
       </div>

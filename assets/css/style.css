@@ -19649,11 +19649,15 @@ label {
     font-size: 44px !important;
   }
 }
-.gallery {
-  border: 2px solid red;
+.gallery_imgWr img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.2s ease;
 }
-.gallery_imgWr {
-  border: 2px solid blue;
+.gallery_imgWr img:hover {
+  transform: scale(1.1);
 }
 
 .dashboard-content {

@@ -492,15 +492,13 @@ if (isset($_GET['signup'])) {
                 rooms, tailored to meet your needs.
               </p>
             </div>
-            <div class="rooms_content--btn d-flex gap-32">
-
-              <a href="gallery.php" target="_blank" class="btn-3 btn font-20 mt-32" id="know-more">
+            <div class="rooms_content--btn d-flex gap-24">
+              <button class="btn-3 font-20 mt-32" id="know-more">
+                View More
+              </button>
+              <a href="gallery.php" class="btn-3 btn font-20 mt-32" id="know-more">
                 Gallery
               </a>
-              <button class="btn-4 font-20 mt-32" id="know-more">
-                View More <i class="ms-8 fa-solid fa-angle-up"></i>
-              </button>
-
             </div>
           </div>
           <div class="col-md-12 col-lg-6 rooms_content--box">
