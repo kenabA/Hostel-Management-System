@@ -1,5 +1,8 @@
 @use "../../custom" as *;
 
 .gallery {
-  border: 2px solid red !important;
+  border: 2px solid red;
+  &_imgWr {
+    border: 2px solid blue;
+  }
 }

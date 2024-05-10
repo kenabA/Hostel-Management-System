@@ -19650,7 +19650,10 @@ label {
   }
 }
 .gallery {
-  border: 2px solid red !important;
+  border: 2px solid red;
+}
+.gallery_imgWr {
+  border: 2px solid blue;
 }
 
 .dashboard-content {

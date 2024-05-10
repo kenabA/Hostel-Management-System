@@ -2,7 +2,7 @@
   "name": "hostel-management-system",
   "version": "1.0.0",
   "description": "Making a hostel management system.",
-  "main": "index.js",
+  "main": "index.php",
   "scripts": {
     "compile": "sass --watch scss:assets/css"
   },
