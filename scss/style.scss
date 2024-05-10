@@ -9,6 +9,7 @@
 @use "components/modal";
 
 // Import the sections
+
 @use "sections/showcase/hero";
 @use "sections/showcase/facilities";
 @use "sections/showcase/footer";
@@ -21,6 +22,7 @@
 @use "sections/showcase/general";
 @use "sections/showcase/login";
 @use "sections/showcase/signup";
+@use "sections/showcase/gallery";
 
 @use "sections/management/admin-dashboard";
 @use "sections/management/general-mgmt";

@@ -19649,6 +19649,10 @@ label {
     font-size: 44px !important;
   }
 }
+.gallery {
+  border: 2px solid red !important;
+}
+
 .dashboard-content {
   padding-block: 48px;
 }
