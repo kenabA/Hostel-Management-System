@@ -2,102 +2,63 @@
 
 session_start();
 
-if (isset($_GET['add'])) {
+if (isset($_GET['post'])) {
 
-  if ($_GET['add'] == 'success') {
+  if ($_GET['post'] == 'true') {
       echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Add Client</strong>
+          <strong class='me-auto'>Notify Hostelers</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Sucessfully added new client!
+          Successfully sent the notifications to the Hostelers.
         </div>
       </div>
     </div>
       ";
-
   } 
-  
-  if ($_GET['add'] == 'error') {
-      echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+
+  if ($_GET['post'] == 'false') {
+      echo "
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Add Client</strong>
+        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-error'></i>
+          <strong class='me-auto'>Notify Hostelers</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Failed to add new client!
+          Couldn't send the notification to the Hostelers.
         </div>
       </div>
     </div>
       ";
-  }
-
-  if( ($_GET['add'] == 'duplicate')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Email already exists. Please try with another!
-        </div>
-      </div>
-    </div>
-    ";
   } 
-  
-  if(($_GET['add'] == 'unmatched')){
-    echo "
-    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
-      <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Client Registration</strong>
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
-        </div>
-      </div>
-    </div>
-    
-    ";
-  }
-  
 }
 
 if (isset($_GET['edit'])) {
 
-  if(($_GET['edit'] == 'unmatched')){
+  if(($_GET['edit'] == 'success')){
     echo "
     <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%; '>
       <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
-        <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
+          <strong class='me-auto'>Edit Room</strong>
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
+            Room edited successfully.
         </div>
       </div>
     </div>
@@ -110,56 +71,35 @@ if (isset($_GET['edit'])) {
       <div id='liveToast' class='toast show hide' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
         <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+          <strong class='me-auto'>Edit Room</strong>
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-            Unmatched Passwords : The passwords do not match.
+            Room with that name already exists.
         </div>
       </div>
     </div>
     ";
   }
 
-  if ($_GET['edit'] == 'success') {
-      echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
-      <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
-        <div class='toast-header '>
-          
-        <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Edit Client</strong>
-        
-          <small>Just Now</small>
-          <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-        </div>
-        <div class='toast-body'>
-          Change saved successfully!
-        </div>
-      </div>
-    </div>
-      ";
-
-  }   
-
   if ($_GET['edit'] == 'error') {
       echo  "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
-          <strong class='me-auto'>Edit Client</strong>
+          <strong class='me-auto'>Edit Room</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Unable to make changes!
+          Unable to make changes to the Room!
         </div>
       </div>
-    </div>)
+    </div>
       ";
   }
 
@@ -169,24 +109,69 @@ if (isset($_GET['delete'])) {
   
   if ($_GET['delete'] == 'success') {
       echo "
-      <div class=' p-3 position-absolute'  style='z-index: 11; bottom: 5%; right: 5%;'>
+      <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
       <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
         <div class='toast-header '>
           
         <i class='fa-solid fa-check me-12 text-white p-8 rounded-5 bg-success'></i>
-          <strong class='me-auto'>Delete Client</strong>
+          <strong class='me-auto'>Delete Room</strong>
         
           <small>Just Now</small>
           <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
         </div>
         <div class='toast-body'>
-          Client deleted Successfully!
+          Room deleted successfully
         </div>
       </div>
     </div>
       ";
 
   } 
+}
+
+if (isset($_GET['add'])) {
+
+  if ($_GET['add'] == 'success') {
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+    <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+      <div class='toast-header '>
+        
+      <i class='fa-solid fa-success me-12 text-white p-8 rounded-5 bg-success'></i>
+        <strong class='me-auto'>Add Room</strong>
+      
+        <small>Just Now</small>
+        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+      </div>
+      <div class='toast-body'>
+        New Room added successfully.
+      </div>
+    </div>
+  </div>
+    ";
+} 
+
+  if ($_GET['add'] == 'duplicate') {
+    echo "
+    <div class=' p-3 position-fixed'  style='z-index: 11; bottom: 5%; right: 5%;'>
+    <div id='liveToast' class='toast show' role='alert' aria-live='assertive' aria-atomic='true'>
+      <div class='toast-header '>
+        
+      <i class='fa-solid fa-xmark me-12 text-white p-8 rounded-5 bg-danger'></i>
+        <strong class='me-auto'>Add Room</strong>
+      
+        <small>Just Now</small>
+        <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+      </div>
+      <div class='toast-body'>
+        Room name already exists.
+      </div>
+    </div>
+  </div>
+    ";
+
+}
+
 }
 
 ?>
@@ -219,6 +204,7 @@ if (isset($_GET['delete'])) {
 <body>
 
 
+
   <!-----=====-----===== SIDENAV =====-----=====----->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header p-32 border-bottom-5 border">
@@ -233,7 +219,7 @@ if (isset($_GET['delete'])) {
             Dashboard</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./client.php" class="td-none text-gray-500 active-side-nav">
+          <a href="./client.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-user"></i>
             Hostelers</a>
         </li>
@@ -248,7 +234,7 @@ if (isset($_GET['delete'])) {
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./rooms.php" class="td-none text-gray-500 active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>
@@ -331,33 +317,36 @@ if (isset($_GET['delete'])) {
 
 
   <main>
-    <section class="dashboard">
+    <section class="rooms">
       <div class="container">
-        <div class="dashboard-content">
+        <div class="rooms-content py-48">
           <div
-            class="dashboard-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
-            <h2 class="text-beta-1">Hostelers</h2>
-            <a href="./add-client.php" class="btn btn-add d-flex align-items-center">
-              <i class="fa-solid fa-plus me-8"></i> Add
+            class="rooms-header border-bottom border-text-gray-600 border-1 pb-12 mb-24 d-flex justify-content-between">
+            <h2 class="text-beta-1">Catering Control Panel</h2>
+            <a href="./add-room.php" class="btn btn-add d-flex align-items-center">
+              <i class="fa-solid fa-plus me-8"></i> Add Room
             </a>
           </div>
 
-          <div class="dashboard-student-list">
-            <div class="dashboard-student-list-body" style="overflow-x: auto">
+          <div class="rooms">
+            <div class="rooms-admin-list-body" style="overflow-x: auto">
               <table class="table table-striped text-nowrap">
                 <thead>
                   <tr class="text-nowrap">
-                    <th class="text-gray-600 fw-medium" scope="col">ID</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Name</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Email</th>
-                    <th class="text-gray-600 fw-medium" scope="col">Course</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Room ID</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Room Image</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Phone Number
+                      Room Type
                     </th>
-                    <th class="text-gray-600 fw-medium" scope="col">Gender</th>
-                    <th class="text-gray-600 fw-medium" scope="col">DOB</th>
+                    <th class="text-gray-600 fw-medium" scope="col">Bed Type</th>
                     <th class="text-gray-600 fw-medium" scope="col">
-                      Food Category
+                      Toilet
+                    </th>
+                    <th class="text-gray-600 fw-medium" scope="col">
+                      Air Conditioning
+                    </th>
+                    <th class="text-gray-600 fw-medium" scope="col">
+                      Internet
                     </th>
                     <th class="text-gray-600 fw-medium" scope="col">
                       Actions
@@ -368,63 +357,55 @@ if (isset($_GET['delete'])) {
 
                   <?php
 
-                  $sql = "SELECT * FROM users where approved= 'Yes'";
+                  $sql = "SELECT * FROM rooms";
                   $query = mysqli_query($conn, $sql);
 
                   while($result = mysqli_fetch_assoc($query)) {
-
-                    $categoryClass = '';
-
-                    if ($result['food_category'] == 'Non - Veg') {
-                      $categoryClass = 'categoryNonVeg';
-                  } elseif(($result['food_category'] == 'Vegetarian'))  {
-                      $categoryClass = 'categoryVeg';
-                  }
-
-                  $genderClass = '';
-
-                  if($result['gender'] == 'Male'){
-                    $genderClass = 'fa-solid fa-mars text-male';
-                  } elseif($result['gender'] == 'Female') {
-                    $genderClass = 'fa-solid fa-venus text-female';
-                  }
+                    $internet = 'Wi-Fi';
+                    if ($result['internet'] != '') {
+                      $internet = $result['internet']." WiFi";
+                    }
 
                     echo "<tr>
-                    <th scope='row'>".$result['id']."</th>
-                    <td>".$result['name']."</td>
-                    <td>".$result['email']."</td>
-                    <td>".$result['course']."</td>
-                    <td>".$result['phone_number']."</td>
-                    <td class='ps-24'><i class='".$genderClass."'></i></td>
-                    <td>".$result['dob']."</td>
-                    <td>".$result['food_category']."</td>
-                    <td class='d-flex gap-12'>
-                    <a href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
+                    <th scope='row'>".$result['room_id']."</th>
+                    <td>
+                    <img src=".$result['room_img']." style='width:200px; height:100px; object-fit: cover; object-position: center;'></img>
+                    </td>
+                    <td>".$result['room_type']."</td>
+                    <td class='text-capitalize'>".$result['bed_type']."</td>
+                    <td>".$result['toilet']."</td>
+                    <td>".$result['air_conditioning']."</td>
+                    <td>".$internet."</td> 
+                    <td>
+                    <a href='./edit-room.php?id=$result[room_id]' class='btn me-8 btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>
                     </a>
-                    <button onclick='deleteClient($result[id])' class='btn btn-delete bg-danger text-white'>
+                    <button onclick='deleteRoom($result[room_id])' class='btn btn-delete bg-danger text-white'>
                       <i class='fa-solid fa-trash'></i>
                     </button>
                   </td>
                   </tr>
-                
-                  ";
+
+       ";
                   }
 ?>
-
                   <script>
-                  function deleteClient(clientId) {
-                    var confirmation = confirm('Do you really want to delete this client');
+                  function deleteRoom(roomId) {
+                    var confirmation = confirm('Do you really want to remove this room from the hostel?');
                     if (confirmation) {
-                      window.location.href = `delete-client.php?id=${clientId}`;
+                      window.location.href = `delete-room.php?id=${roomId}`;
                     }
                   }
                   </script>
 
                 </tbody>
               </table>
+
+              </table>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>

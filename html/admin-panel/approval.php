@@ -109,7 +109,7 @@ if (isset($_GET['approved'])) {
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>

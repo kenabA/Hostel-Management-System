@@ -281,7 +281,7 @@ if (isset($_GET['add'])) {
             Guardian Details</a>
         </li>
         <li class="offcanvas-navigation-list font-18">
-          <a href="./admin.html" class="td-none text-gray-500 non-active-side-nav">
+          <a href="./rooms.php" class="td-none text-gray-500 non-active-side-nav">
             <i class="offcanvas-navigation-list-icon fa-solid fa-bed"></i>
             Rooms</a>
         </li>
@@ -423,24 +423,27 @@ if (isset($_GET['add'])) {
                     <a href='./edit-food.php?id=$result[food_id]' class='btn btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>
                     </a>
-                    <button onclick='deleteFood()' class='btn btn-delete bg-danger text-white'>
+                    <button onclick='deleteFood(".$result['food_id'].")' class='btn btn-delete bg-danger text-white'>
                       <i class='fa-solid fa-trash'></i>
                     </button>
                   </td>
                   </tr>
+                  ";
+                  
+                
+                  
+                  }
+?>
 
                   <script>
-                  function deleteFood(){
+                  function deleteFood(foodId) {
                     var confirmation = confirm('Do you really want to delete this food from the menu?');
                     if (confirmation) {
-                      window.location.href = 'delete-food.php?id=$result[food_id]';
+                      alert(foodId)
+                      window.location.href = `delete-food.php?id=${foodId}`;
                     }
                   }
                   </script>
-                
-                  ";
-                  }
-?>
 
                 </tbody>
               </table>
