@@ -399,10 +399,10 @@ if (isset($_GET['delete'])) {
                     <td>".$result['dob']."</td>
                     <td>".$result['food_category']."</td>
                     <td class='d-flex gap-12'>
-                    <a href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
+                    <a  href='./edit-client.php?id=$result[id]' class='btn btn-edit bg-warning text-black'>
                       <i class='fa-solid fa-pen'> </i>
                     </a>
-                    <button onclick='deleteClient($result[id])' class='btn btn-delete bg-danger text-white'>
+                    <button onclick='deleteClient()' class='btn btn-delete bg-danger text-white'>
                       <i class='fa-solid fa-trash'></i>
                     </button>
                   </td>
@@ -413,10 +413,10 @@ if (isset($_GET['delete'])) {
 ?>
 
                   <script>
-                  function deleteClient(clientId) {
+                  function deleteClient() {
                     var confirmation = confirm('Do you really want to delete this client');
                     if (confirmation) {
-                      window.location.href = `delete-client.php?id=${clientId}`;
+                      window.location.href = `delete-client.php?`;
                     }
                   }
                   </script>
@@ -429,6 +429,7 @@ if (isset($_GET['delete'])) {
       </div>
     </section>
   </main>
+
 
   <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2024 at 07:46 AM
+-- Generation Time: May 25, 2024 at 05:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -90,7 +90,7 @@ CREATE TABLE `catering` (
 --
 
 INSERT INTO `catering` (`food_id`, `food_name`, `food_type`, `food_category`, `food_cuisine`) VALUES
-(1, 'Chowmein', 'Noodle Dish', 'Non-vegetarian / Vegetarian', 'Chinese Cuisine'),
+(1, 'Chowmein but this is just a test as well', 'Noodle Dish', 'Non-vegetarian / Vegetarian', 'Chinese Cuisine'),
 (2, 'Chi. Thakali Rice', 'Rice Dish', 'Non-vegetarian / Vegetarian', 'Nepali or Himalayan Cuisine'),
 (3, 'Veg Thakali Rice Set', 'Rice Dish', 'Vegetarian', 'Nepali or Himalayan Cuisine'),
 (4, 'Momo', 'Dumpling', 'Non-vegetarian / Vegetarian', 'Himalayan or Tibetan Cuisine'),
@@ -105,7 +105,7 @@ INSERT INTO `catering` (`food_id`, `food_name`, `food_type`, `food_category`, `f
 (19, 'Lemon Tea', 'Tea', 'Non-vegetarian / Vegetarian', 'Varies'),
 (20, 'Fries', 'Snacks', 'Non-vegetarian / Vegetarian', 'International Fast Food'),
 (21, 'Nachos', 'Snacks', 'Non-vegetarian / Vegetarian', 'Mexican'),
-(22, 'Keema Noodles', 'Spicy Noodles', 'Non-vegetarian / Vegetarian', 'Korean Noodles');
+(30, 'Adding just for test', 'Adding just for test', 'Non-vegetarian / Vegetarian', 'Adding just for test');
 
 -- --------------------------------------------------------
 
@@ -114,11 +114,26 @@ INSERT INTO `catering` (`food_id`, `food_name`, `food_type`, `food_category`, `f
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `user_type` enum('Student','Admin') NOT NULL
+  `room_id` int(11) NOT NULL,
+  `room_img` varchar(255) NOT NULL,
+  `room_type` varchar(255) NOT NULL,
+  `bed_type` varchar(255) NOT NULL,
+  `toilet` varchar(255) NOT NULL,
+  `air_conditioning` varchar(10) NOT NULL,
+  `internet` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`room_id`, `room_img`, `room_type`, `bed_type`, `toilet`, `air_conditioning`, `internet`) VALUES
+(1, 'https://www.hostelworld.com/blog/wp-content/uploads/2018/09/hostel-room-types-5.jpg', 'Dorms', 'bunk', '1', 'Yes', ''),
+(2, 'https://qph.cf2.quoracdn.net/main-qimg-6a3df0b7530bbffc02ac3f198851db1d-lq', 'Individual', 'Self', '1', 'No', '5G'),
+(3, 'https://images-cdn.ubuy.co.in/647b2bdb4cdc9a6dba4b3687-upper-and-lower-bunk-bed-double-bed.jpg', 'Shared', 'Joint', '1', 'Yes', '5G'),
+(4, 'https://fancyhouse-design.com/wp-content/uploads/2023/11/In-this-bedroom-the-luxury-headboard-with-plush-upholstery-commands-attention..jpg', 'Luxury Suite', 'King', '2', 'Yes', '5G'),
+(11, 'https://cdn.pixabay.com/photo/2021/06/11/12/25/woman-6328466_1280.jpg', 'asd', 'Queen', '2', 'No', '5G'),
+(12, 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19vZl9hX2ZyYW1lX2luX3RoZV9saXZpbmdfcm9vbV9pbl90aGVfc3R5bF85YWM1MjY1ZS02OTdjLTQ4OWMtYTFmYS03NzgzMjJlMTEwODNfMi5qcGc.jpg', 'Normal', 'Queen', '1', 'No', '5G');
 
 -- --------------------------------------------------------
 
@@ -150,15 +165,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `gender`, `course`, `password`, `phone_number`, `dob`, `guardian_name`, `guardian_phone_number`, `guardian_citizen`, `guardian_type`, `food_category`, `status`, `created_at`, `approved`) VALUES
-(49, 'Kenab K.C.', 'kenab@gmail.com', 'Male', 'Computer Science', 'hello@123', '9842742225', '2003-06-06', 'Kalpana Karki', '9842742225', '123123', 'Parent', 'Non - Veg', 'Active', '2024-04-23 13:55:23', 'Yes'),
+(49, 'This is just a test', 'kenab@gmail.com', 'Male', 'Computer Science', 'hello@123', '9842742225', '2003-06-06', 'Kalpana Karki', '9842742225', '123123', 'Parent', 'Non - Veg', 'Inactive', '2024-04-23 13:55:23', 'Yes'),
 (61, 'Avsek KC', 'avsek@gmail.com', 'Male', 'Computer Science', 'hello@123', '9810298376', '2003-12-05', 'George Kc', '9816253415', '123123123', 'Parent', 'Veg', 'Active', '2024-04-26 16:36:25', 'Yes'),
 (62, 'Niraj Chaudhary', 'niraj@gmail.com', 'Male', 'Computer Science', 'hello@123', '9887651029', '2003-06-05', 'Steward Chaudhary', '9716289503', '123123', 'Parent', 'Veg', 'Inactive', '2024-04-26 16:38:34', 'Yes'),
 (64, 'Pragati Bista', 'pragati@gmail.com', 'Female', 'Computer Science', 'hello@123', '9844076609', '2004-06-30', 'Saru Bista', '9876152345', '1268712312', 'Parent', 'Veg', 'Active', '2024-04-27 02:43:22', 'Yes'),
 (66, 'Pranima Dhakal', 'pranima@gmail.com', 'Female', 'Computer Science', 'asd', '9810294857', '2003-04-04', 'Sam Dhakal', '9809182736', '2135643', 'Parent', 'Non - Veg', 'Pending', '2024-04-28 07:02:32', 'Yes'),
 (69, 'Buddha Lama', 'buddha@gmail.com', 'Male', 'Computer Science', 'hello@123', '9840928726', '2024-04-18', 'Sita Lama', '9842742225', '12091287', 'Parent', 'Non - Veg', 'Pending', '2024-04-28 07:24:05', 'Yes'),
-(70, 'Aryan Gurung', 'aryan@gmail.com', 'Male', 'Information Technology', 'hello@123', '9842742225', '2024-04-30', 'Ram Gurung', '9842742225', '123123123', 'Parent', 'Non - Veg', 'Pending', '2024-05-05 15:30:59', 'Yes'),
 (77, 'Kenab K.C.', 'kebab.bahadur@gmail.coms', 'Male', 'Hotel Management', 'qwe', '9842742225', '2024-05-03', 'qwe', '9842742225', '123', 'Parent', 'Non - Veg', 'Pending', '2024-05-06 11:38:59', 'Rejected'),
-(78, 'yogesh', 'ybs@gmail.com', 'Male', 'Hotel Management', 'asdfgh123', '9842742226', '2024-05-07', 'NARAYAN', '9842742227', '1234546678', 'Sibling', 'Non - Veg', 'Inactive', '2024-05-08 05:32:35', 'Yes');
+(78, 'yogesh', 'ybs@gmail.com', 'Male', 'Hotel Management', 'asdfgh123', '9842742226', '2024-05-07', 'NARAYAN', '9842742227', '1234546678', 'Sibling', 'Non - Veg', 'Inactive', '2024-05-08 05:32:35', 'Yes'),
+(79, 'barun', 'barun@gmail.com', 'Male', 'Computer Science', 'asd', '9842742225', '2024-05-02', 'asd ', '9842742225', '123123123', 'Parent', 'Non - Veg', 'Active', '2024-05-12 08:32:46', 'Yes'),
+(81, 'Test', 'test@gmail.com', 'Male', 'Bachelors in IT', 'asdasdasd', '9841029384', '2003-06-06', 'Test Test', '9841230918', '17564925', 'Parent', 'Non - Veg', 'Pending', '2024-05-20 08:52:34', 'Yes');
 
 --
 -- Indexes for dumped tables
@@ -186,7 +202,7 @@ ALTER TABLE `catering`
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`room_id`);
 
 --
 -- Indexes for table `users`
@@ -214,19 +230,19 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `catering`
 --
 ALTER TABLE `catering`
-  MODIFY `food_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `food_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

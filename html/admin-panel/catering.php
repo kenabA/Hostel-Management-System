@@ -374,7 +374,7 @@ if (isset($_GET['add'])) {
               <a href="./add-food.php" class="btn btn-add d-flex align-items-center">
                 <i class="fa-solid fa-plus me-8"></i> Add Food
               </a>
-              <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="./add-client.php"
+              <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="./add-food.php"
                 class="btn btn-add d-flex bg-danger align-items-center">
                 <i class="fa-solid fa-bell me-8"></i>Food Ready
               </a>
